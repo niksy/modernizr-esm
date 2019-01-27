@@ -1,0 +1,18 @@
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/input.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import inputElem from '../src/inputElem.js';
+var inputattrs = 'autocomplete autofocus list placeholder max min multiple pattern required step'.split(' ');
+var attrs = {};
+
+Modernizr.input = function (props) {
+  for (var i = 0, len = props.length; i < len; i++) {
+    attrs[props[i]] = !!(props[i] in inputElem);
+  }
+
+  if (attrs.list) {
+    attrs.list = !!(createElement('datalist') && window.HTMLDataListElement);
+  }
+
+  return attrs;
+}(inputattrs);

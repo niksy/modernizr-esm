@@ -1,0 +1,44 @@
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/hasEvent.js **/
+import ModernizrProto from './Modernizr.js';
+import createElement from './createElement.js';
+
+var hasEvent = function () {
+  var needsFallback = !('onblur' in document.documentElement);
+
+  function inner(eventName, element) {
+    var isSupported;
+
+    if (!eventName) {
+      return false;
+    }
+
+    if (!element || typeof element === 'string') {
+      element = createElement(element || 'div');
+    }
+
+    eventName = 'on' + eventName;
+    isSupported = eventName in element;
+
+    if (!isSupported && needsFallback) {
+      if (!element.setAttribute) {
+        element = createElement('div');
+      }
+
+      element.setAttribute(eventName, '');
+      isSupported = typeof element[eventName] === 'function';
+
+      if (element[eventName] !== undefined) {
+        element[eventName] = undefined;
+      }
+
+      element.removeAttribute(eventName);
+    }
+
+    return isSupported;
+  }
+
+  return inner;
+}();
+
+ModernizrProto.hasEvent = hasEvent;
+export default hasEvent;
