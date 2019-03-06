@@ -3,41 +3,19 @@ const { parse } = require('@babel/parser');
 const { default: traverse } = require('@babel/traverse');
 const { default: generate } = require('@babel/generator');
 const t = require('@babel/types');
+const { default: template } = require('@babel/template');
 const amd = require('rollup-plugin-amd');
 const { modernizrDir, entryDependencies, version } = require('./util');
 
 const babelPlugin = () => {
 
-	const addToQueueNode = () => t.forStatement(
-		t.variableDeclaration('var', [
-			t.variableDeclarator(t.identifier('i'), t.numericLiteral(0))
-		]),
-		t.binaryExpression(
-			'<',
-			t.identifier('i'),
-			t.memberExpression(
-				t.memberExpression(
-					t.identifier('Modernizr'),
-					t.identifier('_q')
-				),
-				t.identifier('length')
-			)
-		),
-		t.updateExpression('++', t.identifier('i')),
-		t.blockStatement([
-			t.expressionStatement(t.callExpression(
-				t.memberExpression(
-					t.memberExpression(
-						t.identifier('Modernizr'),
-						t.identifier('_q')
-					),
-					t.identifier('i'),
-					true
-				),
-				[]
-			))
-		])
-	);
+	const addToQueueNode = () => {
+		return template(`
+			for ( var i = 0; i < Modernizr._q.length; i++ ) {
+				Modernizr._q[i]();
+			}
+		`)();
+	};
 
 	const onListenerNode = (cb) => t.expressionStatement(t.callExpression(
 		t.memberExpression(
@@ -47,41 +25,24 @@ const babelPlugin = () => {
 		[ t.identifier('feature'), t.identifier(cb) ]
 	));
 
-	const asyncTestListenerNode = () => t.functionDeclaration(
-		t.identifier('createAsyncTestListener'),
-		[t.identifier('feature')],
-		t.blockStatement([
-			t.returnStatement(t.functionExpression(
-				null,
-				[t.identifier('cb')],
-				t.blockStatement([
-					t.ifStatement(
-						t.binaryExpression(
-							'===',
-							t.unaryExpression(
-								'typeof',
-								t.identifier('cb')
-							),
-							t.stringLiteral('function')
-						),
-						t.blockStatement([
-							onListenerNode('cb'),
-							t.returnStatement()
-						])
-					),
-					t.returnStatement(t.newExpression(t.identifier('Promise'), [
-						t.functionExpression(
-							null,
-							[t.identifier('resolve')],
-							t.blockStatement([
-								onListenerNode('resolve')
-							])
-						)
-					]))
-				])
-			))
-		])
-	);
+	const asyncTestListenerNode = () => {
+		return template(`
+			function createAsyncTestListener ( IDENTIFIER ) {
+				return function (cb) {
+					if ( typeof cb === "function" ) {
+						Modernizr.on(IDENTIFIER, cb);
+						return;
+					}
+
+					return new Promise(function ( resolve ) {
+						Modernizr.on(IDENTIFIER, resolve);
+					});
+				};
+			}
+		`)({
+			IDENTIFIER: t.identifier('feature')
+		});
+	};
 
 	return {
 		visitor: {
