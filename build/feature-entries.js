@@ -1,11 +1,13 @@
 const path = require('path');
-const babel = require('@babel/core');
+const { parse } = require('@babel/parser');
+const { default: traverse } = require('@babel/traverse');
+const { default: generate } = require('@babel/generator');
+const t = require('@babel/types');
 const amd = require('rollup-plugin-amd');
 const { camelCase } = require('lodash');
 const { version } = require('./util');
 
-const babelPlugin = babel.createConfigItem((babel) => {
-	const { types: t } = babel;
+const babelPlugin = () => {
 
 	let exportValues = [];
 	let modernizrImportPath = null;
@@ -183,7 +185,7 @@ const babelPlugin = babel.createConfigItem((babel) => {
 			}
 		}
 	};
-});
+};
 
 const rollupPlugins = [
 	amd({
@@ -205,9 +207,11 @@ const rollupPlugins = [
 	}),
 	{
 		async renderChunk (source, options) {
-			const result = await babel.transformAsync(source, {
-				plugins: [babelPlugin]
+			const ast = parse(source, {
+				sourceType: 'module',
 			});
+			traverse(ast, babelPlugin().visitor);
+			const result = generate(ast);
 			return `/** Original source code: https://github.com/Modernizr/Modernizr/blob/v${version}/feature-detects/${
 				options.fileName
 			} **/\n${result.code}`;

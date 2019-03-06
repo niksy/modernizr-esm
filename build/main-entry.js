@@ -1,10 +1,12 @@
 const path = require('path');
-const babel = require('@babel/core');
+const { parse } = require('@babel/parser');
+const { default: traverse } = require('@babel/traverse');
+const { default: generate } = require('@babel/generator');
+const t = require('@babel/types');
 const amd = require('rollup-plugin-amd');
 const { modernizrDir, entryDependencies, version } = require('./util');
 
-const babelPlugin = babel.createConfigItem((babel) => {
-	const { types: t } = babel;
+const babelPlugin = () => {
 
 	const addToQueueNode = () => t.forStatement(
 		t.variableDeclaration('var', [
@@ -225,7 +227,7 @@ const babelPlugin = babel.createConfigItem((babel) => {
 			}
 		}
 	};
-});
+};
 
 const rollupPlugins = [
 	amd({
@@ -254,9 +256,11 @@ const rollupPlugins = [
 	}),
 	{
 		async renderChunk (source) {
-			const result = await babel.transformAsync(source, {
-				plugins: [babelPlugin]
+			const ast = parse(source, {
+				sourceType: 'module',
 			});
+			traverse(ast, babelPlugin().visitor);
+			const result = generate(ast);
 			return `/** Original source code: \n${entryDependencies
 				.map((entryDependancy) => ` * https://github.com/Modernizr/Modernizr/blob/v${version}/src/${entryDependancy}`)
 				.join('\n')}\n**/\n${result.code}`;
