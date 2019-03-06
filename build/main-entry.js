@@ -44,6 +44,22 @@ const babelPlugin = () => {
 		});
 	};
 
+	const addTestResultNode = () => {
+		return template(`
+			function addTestResult ( featureNameSplit, result ) {
+				if (featureNameSplit.length === 1) {
+					Modernizr[featureNameSplit[0]] = result;
+				} else {
+					if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+						Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+					}
+
+					Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+				}
+			}
+		`)();
+	};
+
 	return {
 		visitor: {
 			Program (path) {
@@ -114,6 +130,9 @@ const babelPlugin = () => {
 			},
 			ExportDefaultDeclaration (path) {
 				if (path.get('declaration.name').node === 'addTest') {
+					// Add `addTestResult` function declaration
+					path.insertBefore(addTestResultNode());
+
 					// Add `createAsyncTestListener` function declearation
 					path.insertBefore(asyncTestListenerNode());
 
@@ -184,6 +203,20 @@ const babelPlugin = () => {
 					['_config'].includes(path.get('key.name').node)
 				) {
 					path.remove();
+				}
+			},
+			IfStatement (path) {
+				// Remove duplicate code for feature assigning, replacing it with `addTestResult` function call
+				if (
+					(
+						path.get('test.left').isMemberExpression() &&
+						path.get('test.left.object.name').node === 'featureNameSplit' &&
+						path.get('test.right.value').node === 1
+					) &&
+					(path.findParent((path) => path.isFunctionDeclaration() && path.get('id.name').node === 'addTestResult')) === null
+				) {
+					const identifierName = path.get('consequent.body')[0].get('expression.right.name').node;
+					path.replaceWith(t.expressionStatement(t.callExpression(t.identifier('addTestResult'), [t.identifier('featureNameSplit'), t.identifier(identifierName)])));
 				}
 			}
 		}

@@ -38,16 +38,7 @@ function testRunner() {
       for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
         featureName = featureNames[nameIdx];
         featureNameSplit = featureName.split('.');
-
-        if (featureNameSplit.length === 1) {
-          Modernizr[featureNameSplit[0]] = result;
-        } else {
-          if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
-            Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
-          }
-
-          Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
-        }
+        addTestResult(featureNameSplit, result);
       }
     }
   }
@@ -163,16 +154,7 @@ function addTest(feature, test) {
     }
 
     test = typeof test == 'function' ? test() : test;
-
-    if (featureNameSplit.length == 1) {
-      Modernizr[featureNameSplit[0]] = test;
-    } else {
-      if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
-        Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
-      }
-
-      Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
-    }
+    addTestResult(featureNameSplit, test);
 
     Modernizr._trigger(feature, test);
   }
@@ -181,6 +163,18 @@ function addTest(feature, test) {
 }
 
 Modernizr._q.push(function () {});
+
+function addTestResult(featureNameSplit, result) {
+  if (featureNameSplit.length === 1) {
+    Modernizr[featureNameSplit[0]] = result;
+  } else {
+    if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+      Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+    }
+
+    Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+  }
+}
 
 function createAsyncTestListener(feature) {
   return function (cb) {
