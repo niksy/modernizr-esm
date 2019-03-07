@@ -1,4 +1,7 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/serviceworker.js **/
 import Modernizr from '../src/Modernizr.js';
-Modernizr.addTest('serviceworker', 'serviceWorker' in navigator);
+
+var _isBrowser = typeof window !== "undefined";
+
+Modernizr.addTest('serviceworker', _isBrowser && 'serviceWorker' in navigator);
 export default Modernizr.serviceworker;

@@ -1,5 +1,8 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/html5shiv.js **/
 import isSVG from './isSVG.js';
+
+var _isBrowser = typeof window !== "undefined";
+
 var html5;
 
 if (!isSVG) {
@@ -178,7 +181,7 @@ if (!isSVG) {
     if (typeof module == 'object' && module.exports) {
       module.exports = html5;
     }
-  })(typeof window !== 'undefined' ? window : undefined, document);
+  })(_isBrowser && (typeof window !== 'undefined' ? window : undefined), document);
 }
 
 export default html5;

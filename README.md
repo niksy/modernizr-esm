@@ -10,6 +10,7 @@ Features:
 * Tests return multiple named exports if they test multiple features
 * Async tests support Promises as result
 * No global modifications like setting classes on `html` element
+* Ignores browser globals when imported directly in SSR environment
 
 Refer to [original Modernizr documentation](https://github.com/Modernizr/Modernizr/blob/master/README.md) for more information.
 

@@ -6,6 +6,7 @@ const t = require('@babel/types');
 const { default: template } = require('@babel/template');
 const amd = require('rollup-plugin-amd');
 const { modernizrDir, entryDependencies, version } = require('./util');
+const handleGlobalReference = require('./handle-global-reference');
 
 const babelPlugin = () => {
 
@@ -254,6 +255,7 @@ const rollupPlugins = [
 				sourceType: 'module',
 			});
 			traverse(ast, babelPlugin().visitor);
+			traverse(ast, handleGlobalReference().visitor);
 			const result = generate(ast);
 			return `/** Original source code: \n${entryDependencies
 				.map((entryDependancy) => ` * https://github.com/Modernizr/Modernizr/blob/v${version}/src/${entryDependancy}`)
