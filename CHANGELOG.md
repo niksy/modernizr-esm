@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [1.2.0][] - 2019-03-07
+
 ### Added
 
 - Asynchronous tests support in SSR environment
@@ -23,6 +25,7 @@
 - Initial implementation
 
 
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/niksy/modernizr-esm/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/niksy/modernizr-esm/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/niksy/modernizr-esm/tree/v1.1.0
