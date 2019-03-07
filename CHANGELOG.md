@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [1.2.1][] - 2019-03-07
+
 ### Added
 
 - Handling custom globals like `docElement` which source imports
@@ -29,7 +31,8 @@
 - Initial implementation
 
 
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/niksy/modernizr-esm/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/niksy/modernizr-esm/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/niksy/modernizr-esm/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/niksy/modernizr-esm/tree/v1.1.0
