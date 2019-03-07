@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/svg/clippaths.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/svg/clippaths.js **/
 import Modernizr from '../../src/Modernizr.js';
 import toStringFn from '../../src/toStringFn.js';
 Modernizr.addTest('svgclippaths', function () {

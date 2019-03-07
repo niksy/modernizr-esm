@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/forms/formattribute.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/forms/formattribute.js **/
 import Modernizr from '../../src/Modernizr.js';
 import createElement from '../../src/createElement.js';
 import docElement from '../../src/docElement.js';
@@ -24,7 +24,7 @@ Modernizr.addTest('formattribute', function () {
   div.appendChild(form);
   div.appendChild(input);
   docElement.appendChild(div);
-  bool = form.elements && form.elements.length === 1 && input.form === form;
+  bool = form.elements && form.elements.length === 1 && input.form == form;
   div.parentNode.removeChild(div);
   return bool;
 });

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/nativeTestProps.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/nativeTestProps.js **/
 import injectElementWithStyles from './injectElementWithStyles.js';
 import domToCSS from './domToCSS.js';
 import computedStyle from './computedStyle.js';
@@ -23,7 +23,7 @@ function nativeTestProps(props, value) {
 
     conditionText = conditionText.join(' or ');
     return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function (node) {
-      return computedStyle(node, null, 'position') === 'absolute';
+      return computedStyle(node, null, 'position') == 'absolute';
     });
   }
 

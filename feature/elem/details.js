@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/elem/details.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/elem/details.js **/
 import Modernizr from '../../src/Modernizr.js';
 import createElement from '../../src/createElement.js';
 import '../../src/docElement.js';
@@ -16,7 +16,7 @@ Modernizr.addTest('details', function () {
     el.innerHTML = '<summary>a</summary>b';
     diff = el.offsetHeight;
     el.open = true;
-    diff = diff !== el.offsetHeight;
+    diff = diff != el.offsetHeight;
   });
   return diff;
 });

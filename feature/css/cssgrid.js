@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/cssgrid.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/cssgrid.js **/
 import Modernizr from '../../src/Modernizr.js';
 import testAllProps from '../../src/testAllProps.js';
 Modernizr.addTest('cssgridlegacy', testAllProps('grid-columns', '10px', true));

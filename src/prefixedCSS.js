@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/prefixedCSS.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/prefixedCSS.js **/
 import ModernizrProto from './Modernizr.js';
 import prefixed from './prefixed.js';
 import domToCSS from './domToCSS.js';

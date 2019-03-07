@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/battery/lowbattery.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/battery/lowbattery.js **/
 import Modernizr from '../../src/Modernizr.js';
 import prefixed from '../../src/prefixed.js';
 Modernizr.addTest('lowbattery', function () {

@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [1.1.0][] - 2019-03-07
+
 - Update Modernizr to v3.7.0
 - Use Babel tools for creating effective codemode
 - Remove duplicate code for feature assignment
@@ -10,3 +12,7 @@
 ### Added
 
 - Initial implementation
+
+
+[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/niksy/modernizr-esm/tree/v1.1.0

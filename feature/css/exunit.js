@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/exunit.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/exunit.js **/
 import Modernizr from '../../src/Modernizr.js';
 import modElem from '../../src/modElem.js';
 Modernizr.addTest('cssexunit', function () {

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/network/xhr2.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/network/xhr2.js **/
 import Modernizr from '../../src/Modernizr.js';
 
 var _isBrowser = typeof window !== "undefined";

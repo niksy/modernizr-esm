@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/testDOMProps.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/testDOMProps.js **/
 import is from './is.js';
 import fnBind from './fnBind.js';
 

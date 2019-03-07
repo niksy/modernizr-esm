@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/dom/documentfragment.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/dom/documentfragment.js **/
 import Modernizr from '../../src/Modernizr.js';
 import docElement from '../../src/docElement.js';
 Modernizr.addTest('documentfragment', function () {

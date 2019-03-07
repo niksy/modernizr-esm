@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/dom/passiveeventlisteners.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/dom/passiveeventlisteners.js **/
 import Modernizr from '../../src/Modernizr.js';
 Modernizr.addTest('passiveeventlisteners', function () {
   var supportsPassiveOption = false;
@@ -9,11 +9,7 @@ Modernizr.addTest('passiveeventlisteners', function () {
         supportsPassiveOption = true;
       }
     });
-
-    var noop = function () {};
-
-    window.addEventListener('testPassiveEventSupport', noop, opts);
-    window.removeEventListener('testPassiveEventSupport', noop, opts);
+    window.addEventListener('test', null, opts);
   } catch (e) {}
 
   return supportsPassiveOption;

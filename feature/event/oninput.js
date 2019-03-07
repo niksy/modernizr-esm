@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/event/oninput.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/event/oninput.js **/
 import Modernizr from '../../src/Modernizr.js';
 import docElement from '../../src/docElement.js';
 import createElement from '../../src/createElement.js';
@@ -9,7 +9,7 @@ Modernizr.addTest('oninput', function () {
   var supportsOnInput;
   input.setAttribute('oninput', 'return');
 
-  if (hasEvent('oninput', docElement) || typeof input.oninput === 'function') {
+  if (hasEvent('oninput', docElement) || typeof input.oninput == 'function') {
     return true;
   }
 

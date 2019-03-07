@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/webp-lossless.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/img/webp-lossless.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var image = new Image();
@@ -10,7 +10,7 @@ Modernizr.addAsyncTest(function () {
   };
 
   image.onload = function () {
-    addTest('webplossless', image.width === 1, {
+    addTest('webplossless', image.width == 1, {
       aliases: ['webp-lossless']
     });
   };

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/mediaquery/pointermq.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/mediaquery/pointermq.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 import mq from '../../src/mq.js';
 Modernizr.addTest('pointermq', mq('(pointer:coarse),(pointer:fine),(pointer:none)'));

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/testProps.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/testProps.js **/
 import contains from './contains.js';
 import mStyle from './mStyle.js';
 import createElement from './createElement.js';
@@ -49,13 +49,13 @@ function testProps(props, prefixed, value, skipValueTest) {
           mStyle.style[prop] = value;
         } catch (e) {}
 
-        if (mStyle.style[prop] !== before) {
+        if (mStyle.style[prop] != before) {
           cleanElems();
-          return prefixed === 'pfx' ? prop : true;
+          return prefixed == 'pfx' ? prop : true;
         }
       } else {
         cleanElems();
-        return prefixed === 'pfx' ? prop : true;
+        return prefixed == 'pfx' ? prop : true;
       }
     }
   }

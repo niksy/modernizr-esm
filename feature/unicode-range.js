@@ -1,9 +1,9 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/unicode-range.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/unicode-range.js **/
 import Modernizr from '../src/Modernizr.js';
-import testStyles from '../src/testStyles.js';
+import '../src/testStyles.js';
 import createElement from '../src/createElement.js';
 Modernizr.addTest('unicoderange', function () {
-  return testStyles('@font-face{font-family:"unicodeRange";src:local("Arial");unicode-range:U+0020,U+002E}#modernizr span{font-size:20px;display:inline-block;font-family:"unicodeRange",monospace}#modernizr .mono{font-family:monospace}', function (elem) {
+  return Modernizr.testStyles('@font-face{font-family:"unicodeRange";src:local("Arial");unicode-range:U+0020,U+002E}#modernizr span{font-size:20px;display:inline-block;font-family:"unicodeRange",monospace}#modernizr .mono{font-family:monospace}', function (elem) {
     var testGlyphs = ['.', '.', 'm', 'm'];
 
     for (var i = 0; i < testGlyphs.length; i++) {

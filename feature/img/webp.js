@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/webp.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/img/webp.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var webpTests = [{
@@ -20,7 +20,7 @@ Modernizr.addAsyncTest(function () {
     var image = new Image();
 
     function addResult(event) {
-      var result = event && event.type === 'load' ? image.width === 1 : false;
+      var result = event && event.type === 'load' ? image.width == 1 : false;
       var baseTest = name === 'webp';
       addTest(name, baseTest && result ? new Boolean(result) : result);
 

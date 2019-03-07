@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/inputtypes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/inputtypes.js **/
 import Modernizr from '../src/Modernizr.js';
 import inputElem from '../src/inputElem.js';
 import docElement from '../src/docElement.js';
@@ -28,7 +28,7 @@ Modernizr.inputtypes = function (props) {
       } else if (/^(search|tel)$/.test(inputElemType)) ;else if (/^(url|email)$/.test(inputElemType)) {
         bool = inputElem.checkValidity && inputElem.checkValidity() === false;
       } else {
-        bool = inputElem.value !== smile;
+        bool = inputElem.value != smile;
       }
     }
 

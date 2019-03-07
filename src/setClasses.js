@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/setClasses.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/setClasses.js **/
 import Modernizr from './Modernizr.js';
 import docElement from './docElement.js';
 import isSVG from './isSVG.js';
@@ -17,9 +17,7 @@ function setClasses(classes) {
   }
 
   if (true) {
-    if (classes.length > 0) {
-      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
-    }
+    className += ' ' + classPrefix + classes.join(' ' + classPrefix);
 
     if (isSVG) {
       docElement.className.baseVal = className;
