@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Handling custom globals like `docElement` which source imports
+
 ## [1.2.0][] - 2019-03-07
 
 ### Added

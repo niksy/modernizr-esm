@@ -3,6 +3,7 @@ const globals = require('globals');
 const { difference } = require('lodash');
 
 const browserGlobals = difference(Object.keys(globals.browser), Object.keys(globals.node));
+const customGlobals = ['docElement'];
 
 function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 	// Handle only if
@@ -10,6 +11,7 @@ function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 	// * is not variable declarator for browser check
 	// * doesn’t already have check for browser
 	// * is not inside `try` statement
+	// * is not default import specifier and identifier is not inside custom globals
 	// * is not part of Modernizr object
 	// * is not property of object which is considered browser global
 	if (
@@ -17,6 +19,7 @@ function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 		Boolean(path.findParent((path) => path.isVariableDeclarator() && path.get('id.name').node === globalReferenceVariable.name)) === false &&
 		Boolean(path.findParent((path) => path.isLogicalExpression() && path.get('left.name').node === globalReferenceVariable.name)) === false &&
 		Boolean(path.findParent((path) => path.isTryStatement())) === false &&
+		(path.parentPath.isImportDefaultSpecifier() === true && customGlobals.includes(path.get('name').node)) === false &&
 		(path.parentPath.isMemberExpression() && path.parentPath.get('object.name').node === 'Modernizr') === false &&
 		((path.parentPath.isMemberExpression() && browserGlobals.includes(path.parentPath.get('object.name').node)) === false && path.parentPath.get('property') === path) === false
 	) {
@@ -86,7 +89,7 @@ const babelPlugin = ( options = {} ) => {
 				}
 
 				// Check if identifier is browser global
-				if (browserGlobals.includes(path.get('name').node)) {
+				if ([...browserGlobals, ...customGlobals].includes(path.get('name').node)) {
 					const name = path.get('name').node;
 					if ( shouldHandleEnvironmentForPath(path, GLOBAL_REFERENCE_VARIABLE) ) {
 						checkGlobalReference = true;
