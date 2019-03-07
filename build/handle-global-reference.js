@@ -4,9 +4,7 @@ const { difference } = require('lodash');
 
 const browserGlobals = difference(Object.keys(globals.browser), Object.keys(globals.node));
 
-let GLOBAL_REFERENCE_VARIABLE = null;
-
-function shouldHandleEnvironmentForPath (path) {
+function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 	// Handle only if
 	// * is not inside function
 	// * is not variable declarator for browser check
@@ -16,8 +14,8 @@ function shouldHandleEnvironmentForPath (path) {
 	// * is not property of object which is considered browser global
 	if (
 		Boolean(path.findParent((path) => path.isFunctionExpression() || path.isArrowFunctionExpression() || path.isFunctionDeclaration())) === false &&
-		Boolean(path.findParent((path) => path.isVariableDeclarator() && path.get('id.name').node === GLOBAL_REFERENCE_VARIABLE.name)) === false &&
-		Boolean(path.findParent((path) => path.isLogicalExpression() && path.get('left.name').node === GLOBAL_REFERENCE_VARIABLE.name)) === false &&
+		Boolean(path.findParent((path) => path.isVariableDeclarator() && path.get('id.name').node === globalReferenceVariable.name)) === false &&
+		Boolean(path.findParent((path) => path.isLogicalExpression() && path.get('left.name').node === globalReferenceVariable.name)) === false &&
 		Boolean(path.findParent((path) => path.isTryStatement())) === false &&
 		(path.parentPath.isMemberExpression() && path.parentPath.get('object.name').node === 'Modernizr') === false &&
 		((path.parentPath.isMemberExpression() && browserGlobals.includes(path.parentPath.get('object.name').node)) === false && path.parentPath.get('property') === path) === false
@@ -27,8 +25,13 @@ function shouldHandleEnvironmentForPath (path) {
 	return false;
 }
 
-const babelPlugin = () => {
+const babelPlugin = ( options = {} ) => {
 
+	const {
+		isMainEntry = false
+	} = options;
+
+	let GLOBAL_REFERENCE_VARIABLE = null;
 	let checkGlobalReference = false;
 
 	const globalReferenceNode = () => {
@@ -67,10 +70,25 @@ const babelPlugin = () => {
 				}
 			},
 			Identifier (path) {
+
+				let foundPath = null;
+
+				// Handle feature function calls in main entry
+				if ( isMainEntry ) {
+					checkGlobalReference = true;
+
+					if ( path.get('name').node === 'fn' ) {
+						foundPath = path.findParent((path) => path.isCallExpression() && path.get('callee.object').node && path.get('callee.object.name').node === 'feature' && !path.parentPath.isLogicalExpression());
+					}
+					if ( path.get('name').node === 'test' ) {
+						foundPath = path.findParent((path) => path.isCallExpression() && path.get('callee').node && path.get('callee.name').node === 'test' && !path.parentPath.isLogicalExpression());
+					}
+				}
+
 				// Check if identifier is browser global
 				if (browserGlobals.includes(path.get('name').node)) {
 					const name = path.get('name').node;
-					if ( shouldHandleEnvironmentForPath(path) ) {
+					if ( shouldHandleEnvironmentForPath(path, GLOBAL_REFERENCE_VARIABLE) ) {
 						checkGlobalReference = true;
 
 						// Modernizr.addTest('feature', ...);
@@ -81,8 +99,6 @@ const babelPlugin = () => {
 						const reassignmentNode = path.findParent((path) => path.isAssignmentExpression());
 						// ( ... ? ... : ... )
 						const conditionalExpressionNode = path.findParent((path) => path.isConditionalExpression() && path.get('test.left').node && path.get('test.left.name').node !== GLOBAL_REFERENCE_VARIABLE.name);
-
-						let foundPath = null;
 
 						if (addTestNode) {
 							foundPath = addTestNode.get('arguments')[1];
@@ -96,14 +112,14 @@ const babelPlugin = () => {
 						if (conditionalExpressionNode) {
 							foundPath = conditionalExpressionNode;
 						}
-
-						if ( foundPath ) {
-							const clone = t.cloneNode(foundPath.node);
-							foundPath.replaceWith(t.logicalExpression('&&', GLOBAL_REFERENCE_VARIABLE, clone));
-						}
-
 					}
 				}
+
+				if ( foundPath ) {
+					const clone = t.cloneNode(foundPath.node);
+					foundPath.replaceWith(t.logicalExpression('&&', GLOBAL_REFERENCE_VARIABLE, clone));
+				}
+
 			}
 		}
 	};

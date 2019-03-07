@@ -7,6 +7,9 @@
  * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/tests
 **/
 import is from './is';
+
+var _isBrowser = typeof window !== "undefined";
+
 var tests = [];
 
 function testRunner() {
@@ -33,7 +36,7 @@ function testRunner() {
         }
       }
 
-      result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+      result = is(feature.fn, 'function') ? _isBrowser && feature.fn() : feature.fn;
 
       for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
         featureName = featureNames[nameIdx];
@@ -153,7 +156,7 @@ function addTest(feature, test) {
       return Modernizr;
     }
 
-    test = typeof test === 'function' ? test() : test;
+    test = typeof test === 'function' ? _isBrowser && test() : test;
     addTestResult(featureNameSplit, test);
 
     Modernizr._trigger(feature, test);

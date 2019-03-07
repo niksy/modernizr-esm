@@ -255,7 +255,7 @@ const rollupPlugins = [
 				sourceType: 'module',
 			});
 			traverse(ast, babelPlugin().visitor);
-			traverse(ast, handleGlobalReference().visitor);
+			traverse(ast, handleGlobalReference({ isMainEntry: true }).visitor);
 			const result = generate(ast);
 			return `/** Original source code: \n${entryDependencies
 				.map((entryDependancy) => ` * https://github.com/Modernizr/Modernizr/blob/v${version}/src/${entryDependancy}`)

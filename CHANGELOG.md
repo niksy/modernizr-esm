@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Asynchronous tests support in SSR environment
+
 ## [1.1.1][] - 2019-03-07
 
 - Properly generate v3.7.0
