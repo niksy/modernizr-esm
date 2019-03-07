@@ -1,7 +1,7 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/gradients.js **/
-import Modernizr from '../../src/Modernizr.js';
-import prefixes from '../../src/prefixes.js';
-import createElement from '../../src/createElement.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/gradients.js **/
+import Modernizr from '../src/Modernizr.js';
+import prefixes from '../src/prefixes.js';
+import createElement from '../src/createElement.js';
 Modernizr.addTest('cssgradients', function () {
   var str1 = 'background-image:';
   var str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';

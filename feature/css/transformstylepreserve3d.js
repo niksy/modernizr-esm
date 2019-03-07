@@ -1,7 +1,7 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/transformstylepreserve3d.js **/
-import Modernizr from '../../src/Modernizr.js';
-import createElement from '../../src/createElement.js';
-import docElement from '../../src/docElement.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/transformstylepreserve3d.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import docElement from '../src/docElement.js';
 Modernizr.addTest('preserve3d', function () {
   var outerAnchor, innerAnchor;
   var CSS = window.CSS;

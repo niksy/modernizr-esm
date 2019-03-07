@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/mq.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/mq.js **/
 import ModernizrProto from './Modernizr.js';
 import injectElementWithStyles from './injectElementWithStyles.js';
 
@@ -15,7 +15,7 @@ var mq = function () {
   return function (mq) {
     var bool = false;
     injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function (node) {
-      bool = (window.getComputedStyle ? window.getComputedStyle(node, null) : node.currentStyle).position == 'absolute';
+      bool = (window.getComputedStyle ? window.getComputedStyle(node, null) : node.currentStyle).position === 'absolute';
     });
     return bool;
   };

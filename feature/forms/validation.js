@@ -1,8 +1,8 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/forms/validation.js **/
-import Modernizr from '../../src/Modernizr.js';
-import createElement from '../../src/createElement.js';
-import '../../src/docElement.js';
-import testStyles from '../../src/testStyles.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/forms/validation.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import '../src/docElement.js';
+import testStyles from '../src/testStyles.js';
 Modernizr.addTest('formvalidation', function () {
   var form = createElement('form');
 

@@ -1,7 +1,7 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/network/xhr-responsetype.js **/
-import Modernizr from '../../src/Modernizr.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/network/xhr-responsetype.js **/
+import Modernizr from '../src/Modernizr.js';
 Modernizr.addTest('xhrresponsetype', function () {
-  if (typeof XMLHttpRequest == 'undefined') {
+  if (typeof XMLHttpRequest === 'undefined') {
     return false;
   }
 

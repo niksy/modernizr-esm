@@ -1,9 +1,10 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/hasEvent.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/hasEvent.js **/
 import ModernizrProto from './Modernizr.js';
 import createElement from './createElement.js';
+import docElement from './docElement.js';
 
 var hasEvent = function () {
-  var needsFallback = !('onblur' in document.documentElement);
+  var needsFallback = !('onblur' in docElement);
 
   function inner(eventName, element) {
     var isSupported;

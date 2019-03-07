@@ -1,7 +1,8 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/pseudotransitions.js **/
-import Modernizr from '../../src/Modernizr.js';
-import '../../src/testStyles.js';
-import './transitions.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/pseudotransitions.js **/
+import Modernizr from '../src/Modernizr.js';
+import testStyles from '../src/testStyles.js';
+import prefixes from '../src/prefixes.js';
+import './css/transitions.js';
 Modernizr.addTest('csspseudotransitions', function () {
   var result = false;
 
@@ -9,8 +10,8 @@ Modernizr.addTest('csspseudotransitions', function () {
     return result;
   }
 
-  var styles = '#modernizr:before { content:" "; font-size:5px;' + Modernizr._prefixes.join('transition:0s 100s;') + '}' + '#modernizr.trigger:before { font-size:10px; }';
-  Modernizr.testStyles(styles, function (elem) {
+  var styles = '#modernizr:before { content:" "; font-size:5px;' + prefixes.join('transition:0s 100s;') + '}' + '#modernizr.trigger:before { font-size:10px; }';
+  testStyles(styles, function (elem) {
     window.getComputedStyle(elem, ':before').getPropertyValue('font-size');
     elem.className += 'trigger';
     result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '5px';

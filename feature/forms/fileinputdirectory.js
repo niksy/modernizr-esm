@@ -1,7 +1,7 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/forms/fileinputdirectory.js **/
-import Modernizr from '../../src/Modernizr.js';
-import createElement from '../../src/createElement.js';
-import domPrefixes from '../../src/domPrefixes.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/forms/fileinputdirectory.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import domPrefixes from '../src/domPrefixes.js';
 Modernizr.addTest('fileinputdirectory', function () {
   var elem = createElement('input'),
       dir = 'directory';

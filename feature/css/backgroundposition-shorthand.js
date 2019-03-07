@@ -1,6 +1,6 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/backgroundposition-shorthand.js **/
-import Modernizr from '../../src/Modernizr.js';
-import createElement from '../../src/createElement.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/backgroundposition-shorthand.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
 Modernizr.addTest('bgpositionshorthand', function () {
   var elem = createElement('a');
   var eStyle = elem.style;

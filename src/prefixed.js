@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/prefixed.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/prefixed.js **/
 import ModernizrProto from './Modernizr.js';
 import testPropsAll from './testPropsAll.js';
 import cssToDOM from './cssToDOM.js';
@@ -9,7 +9,7 @@ var prefixed = ModernizrProto.prefixed = function (prop, obj, elem) {
     return atRule(prop);
   }
 
-  if (prop.indexOf('-') != -1) {
+  if (prop.indexOf('-') !== -1) {
     prop = cssToDOM(prop);
   }
 

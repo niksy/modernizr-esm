@@ -1,5 +1,5 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/htmlimports.js **/
-import { addTest, createAsyncTestListener } from "../src/Modernizr.js";
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/htmlimports.js **/
+import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 import createElement from '../src/createElement.js';
-addTest('htmlimports', 'import' in createElement('link'));
-export default createAsyncTestListener("htmlimports");
+Modernizr.addTest('htmlimports', 'import' in createElement('link'));
+export default Modernizr.htmlimports;

@@ -2,6 +2,9 @@
 
 ## [Unreleased][]
 
+- Properly generate v3.7.0
+	- `package.json` wasn’t updated with latest version
+
 ## [1.1.0][] - 2019-03-07
 
 - Update Modernizr to v3.7.0

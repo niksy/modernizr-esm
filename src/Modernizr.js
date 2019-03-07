@@ -1,10 +1,10 @@
 /** Original source code: 
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/Modernizr
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/ModernizrProto
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/addTest
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/hasOwnProp
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/testRunner
- * https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/tests
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/Modernizr
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/ModernizrProto
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/addTest
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/hasOwnProp
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/testRunner
+ * https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/tests
 **/
 import is from './is';
 var tests = [];
@@ -45,7 +45,7 @@ function testRunner() {
 }
 
 var ModernizrProto = {
-  _version: "3.6.0",
+  _version: "3.7.0",
   _q: [],
   on: function (test, cb) {
     var self = this;
@@ -134,7 +134,7 @@ ModernizrProto._trigger = function (feature, res) {
 };
 
 function addTest(feature, test) {
-  if (typeof feature == 'object') {
+  if (typeof feature === 'object') {
     for (var key in feature) {
       if (hasOwnProp(feature, key)) {
         addTest(key, feature[key]);
@@ -145,15 +145,15 @@ function addTest(feature, test) {
     var featureNameSplit = feature.split('.');
     var last = Modernizr[featureNameSplit[0]];
 
-    if (featureNameSplit.length == 2) {
+    if (featureNameSplit.length === 2) {
       last = last[featureNameSplit[1]];
     }
 
-    if (typeof last != 'undefined') {
+    if (typeof last !== 'undefined') {
       return Modernizr;
     }
 
-    test = typeof test == 'function' ? test() : test;
+    test = typeof test === 'function' ? test() : test;
     addTestResult(featureNameSplit, test);
 
     Modernizr._trigger(feature, test);

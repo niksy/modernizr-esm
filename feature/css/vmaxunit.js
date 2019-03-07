@@ -1,9 +1,9 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/vmaxunit.js **/
-import Modernizr from '../../src/Modernizr.js';
-import '../../src/docElement.js';
-import testStyles from '../../src/testStyles.js';
-import roundedEquals from '../../src/roundedEquals.js';
-import computedStyle from '../../src/computedStyle.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/vmaxunit.js **/
+import Modernizr from '../src/Modernizr.js';
+import '../src/docElement.js';
+import testStyles from '../src/testStyles.js';
+import roundedEquals from '../src/roundedEquals.js';
+import computedStyle from '../src/computedStyle.js';
 testStyles('#modernizr1{width: 50vmax}#modernizr2{width:50px;height:50px;overflow:scroll}#modernizr3{position:fixed;top:0;left:0;bottom:0;right:0}', function (node) {
   var elem = node.childNodes[2];
   var scroller = node.childNodes[1];

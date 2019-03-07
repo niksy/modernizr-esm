@@ -1,7 +1,7 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/canvas/todataurl.js **/
-import Modernizr from '../../src/Modernizr.js';
-import createElement from '../../src/createElement.js';
-import '../canvas.js';
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/canvas/todataurl.js **/
+import Modernizr from '../src/Modernizr.js';
+import createElement from '../src/createElement.js';
+import './canvas.js';
 var canvas = createElement('canvas');
 Modernizr.addTest('todataurljpeg', function () {
   return !!Modernizr.canvas && canvas.toDataURL('image/jpeg').indexOf('data:image/jpeg') === 0;

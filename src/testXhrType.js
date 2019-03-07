@@ -1,6 +1,6 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/src/testXhrType.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/testXhrType.js **/
 var testXhrType = function (type) {
-  if (typeof XMLHttpRequest == 'undefined') {
+  if (typeof XMLHttpRequest === 'undefined') {
     return false;
   }
 
@@ -13,7 +13,7 @@ var testXhrType = function (type) {
     return false;
   }
 
-  return 'response' in xhr && xhr.responseType == type;
+  return 'response' in xhr && xhr.responseType === type;
 };
 
 export default testXhrType;

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/vml.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/vml.js **/
 import Modernizr from '../src/Modernizr.js';
 import createElement from '../src/createElement.js';
 import isSVG from '../src/isSVG.js';
@@ -15,7 +15,7 @@ Modernizr.addTest('vml', function () {
       shape.style.behavior = 'url(#default#VML)';
     }
 
-    supports = shape ? typeof shape.adj == 'object' : true;
+    supports = shape ? typeof shape.adj === 'object' : true;
   }
 
   return supports;
