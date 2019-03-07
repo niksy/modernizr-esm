@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/shapes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/shapes.js **/
 import Modernizr from '../../src/Modernizr.js';
 import testAllProps from '../../src/testAllProps.js';
 Modernizr.addTest('shapes', testAllProps('shapeOutside', 'content-box', true));

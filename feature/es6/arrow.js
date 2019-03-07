@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/es6/arrow.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/es6/arrow.js **/
 import Modernizr from '../../src/Modernizr.js';
 Modernizr.addTest('arrow', function () {
   try {

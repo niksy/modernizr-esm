@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/wrapflow.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/wrapflow.js **/
 import Modernizr from '../../src/Modernizr.js';
 import prefixed from '../../src/prefixed.js';
 import docElement from '../../src/docElement.js';
@@ -25,6 +25,6 @@ Modernizr.addTest('wrapflow', function () {
   var leftOffset = content.offsetLeft;
   docElement.removeChild(container);
   exclusion = content = container = undefined;
-  return leftOffset == 150;
+  return leftOffset === 150;
 });
 export default Modernizr.wrapflow;

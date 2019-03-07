@@ -1,10 +1,10 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/img/jpegxr.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/jpegxr.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var image = new Image();
 
   image.onload = image.onerror = function () {
-    addTest('jpegxr', image.width == 1, {
+    addTest('jpegxr', image.width === 1, {
       aliases: ['jpeg-xr']
     });
   };

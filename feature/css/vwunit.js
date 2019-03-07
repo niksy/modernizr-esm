@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/vwunit.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/vwunit.js **/
 import Modernizr from '../../src/Modernizr.js';
 import testStyles from '../../src/testStyles.js';
 import computedStyle from '../../src/computedStyle.js';

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/css/checked.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/css/checked.js **/
 import Modernizr from '../../src/Modernizr.js';
 import createElement from '../../src/createElement.js';
 import testStyles from '../../src/testStyles.js';

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/crypto.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/crypto.js **/
 import Modernizr from '../src/Modernizr.js';
 import prefixed from '../src/prefixed.js';
 

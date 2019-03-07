@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/img/apng.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/apng.js **/
 import createElement from '../../src/createElement.js';
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 import '../canvas.js';
@@ -13,7 +13,7 @@ Modernizr.addAsyncTest(function () {
 
   image.onload = function () {
     addTest('apng', function () {
-      if (typeof canvas.getContext == 'undefined') {
+      if (typeof canvas.getContext === 'undefined') {
         return false;
       } else {
         ctx.drawImage(image, 0, 0);

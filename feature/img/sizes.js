@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.6.0/feature-detects/img/sizes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/sizes.js **/
 import createElement from '../../src/createElement.js';
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
@@ -11,7 +11,7 @@ Modernizr.addAsyncTest(function () {
     width1 = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
     test = function () {
-      addTest('sizes', image.width == 2);
+      addTest('sizes', image.width === 2);
     };
 
     image.onload = test;
