@@ -1,7 +1,9 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/load.js **/
 import ModernizrProto from './Modernizr.js';
 
-var load = function () {
+var _isBrowser = typeof window !== "undefined";
+
+var load = _isBrowser && function () {
   var err = function () {};
 
   var warn = function () {};

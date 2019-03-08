@@ -2,10 +2,13 @@
 import Modernizr from '../src/Modernizr.js';
 import inputElem from '../src/inputElem.js';
 import docElement from '../src/docElement.js';
+
+var _isBrowser = typeof window !== "undefined";
+
 var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
 var inputs = {};
 
-Modernizr.inputtypes = function (props) {
+Modernizr.inputtypes = _isBrowser && function (props) {
   var len = props.length;
   var smile = '1)';
   var inputElemType;

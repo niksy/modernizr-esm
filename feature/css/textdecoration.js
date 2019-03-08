@@ -2,7 +2,9 @@
 import Modernizr from '../src/Modernizr.js';
 import testAllProps from '../src/testAllProps.js';
 
-(function () {
+var _isBrowser = typeof window !== "undefined";
+
+_isBrowser && function () {
   Modernizr.addTest('textdecoration', function () {
     var bool = false;
     var test = testAllProps('textDecoration');
@@ -25,6 +27,5 @@ import testAllProps from '../src/testAllProps.js';
     test = testAllProps('textDecoration' + props[i]);
     Modernizr.addTest('textdecoration.' + name, test);
   }
-})();
-
+}();
 export default Modernizr.textdecoration;

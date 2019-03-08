@@ -2,7 +2,9 @@
 import Modernizr from '../src/Modernizr.js';
 import testAllProps from '../src/testAllProps.js';
 
-(function () {
+var _isBrowser = typeof window !== "undefined";
+
+_isBrowser && function () {
   Modernizr.addTest('csscolumns', function () {
     var bool = false;
     var test = testAllProps('columnCount');
@@ -30,6 +32,5 @@ import testAllProps from '../src/testAllProps.js';
 
     Modernizr.addTest('csscolumns.' + name, test);
   }
-})();
-
+}();
 export default Modernizr.csscolumns;

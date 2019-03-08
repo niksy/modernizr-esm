@@ -2,8 +2,10 @@
 import Modernizr from '../src/Modernizr.js';
 import testStyles from '../src/testStyles.js';
 
-var fontface = function () {
-  var blacklist = function () {
+var _isBrowser = typeof window !== "undefined";
+
+var fontface = _isBrowser && function () {
+  var blacklist = _isBrowser && function () {
     var ua = navigator.userAgent;
     var webos = ua.match(/w(eb)?osbrowser/gi);
     var wppre8 = ua.match(/windows phone/gi) && ua.match(/iemobile\/([0-9])+/gi) && parseFloat(RegExp.$1) >= 9;

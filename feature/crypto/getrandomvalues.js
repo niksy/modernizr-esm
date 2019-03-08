@@ -3,7 +3,9 @@ import Modernizr from '../src/Modernizr.js';
 import prefixed from '../src/prefixed.js';
 import is from '../src/is.js';
 
-var getrandomvalues = function () {
+var _isBrowser = typeof window !== "undefined";
+
+var getrandomvalues = _isBrowser && function () {
   var crypto = prefixed('crypto', window);
   var supportsGetRandomValues;
 

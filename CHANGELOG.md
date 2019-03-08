@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Fixed
+
+- Handle IIFE for SSR environment
+
 ## [1.2.1][] - 2019-03-07
 
 ### Added

@@ -7,7 +7,7 @@ const customGlobals = ['docElement'];
 
 function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 	// Handle only if
-	// * is not inside function
+	// * is not inside function or is inside IIFE
 	// * is not variable declarator for browser check
 	// * doesn’t already have check for browser
 	// * is not inside `try` statement
@@ -15,7 +15,10 @@ function shouldHandleEnvironmentForPath (path, globalReferenceVariable) {
 	// * is not part of Modernizr object
 	// * is not property of object which is considered browser global
 	if (
-		Boolean(path.findParent((path) => path.isFunctionExpression() || path.isArrowFunctionExpression() || path.isFunctionDeclaration())) === false &&
+		(
+			Boolean(path.findParent((path) => path.isFunctionExpression() || path.isArrowFunctionExpression() || path.isFunctionDeclaration())) === false ||
+			Boolean(path.findParent((path) => path.isCallExpression() && !path.parentPath.isLogicalExpression() && path.get('callee').isFunctionExpression())) === true
+		) &&
 		Boolean(path.findParent((path) => path.isVariableDeclarator() && path.get('id.name').node === globalReferenceVariable.name)) === false &&
 		Boolean(path.findParent((path) => path.isLogicalExpression() && path.get('left.name').node === globalReferenceVariable.name)) === false &&
 		Boolean(path.findParent((path) => path.isTryStatement())) === false &&
@@ -35,7 +38,7 @@ const babelPlugin = ( options = {} ) => {
 	} = options;
 
 	let GLOBAL_REFERENCE_VARIABLE = null;
-	let checkGlobalReference = false;
+	let addGlobalReferenceCheck = false;
 
 	const globalReferenceNode = () => {
 		return t.variableDeclaration('var', [
@@ -55,7 +58,7 @@ const babelPlugin = ( options = {} ) => {
 					}
 				},
 				exit (path) {
-					if ( checkGlobalReference === true ) {
+					if ( addGlobalReferenceCheck === true ) {
 						// Get last import declaration
 						const lastImportdeclaration = path.get('body')
 							.filter((path) => {
@@ -78,7 +81,6 @@ const babelPlugin = ( options = {} ) => {
 
 				// Handle feature function calls in main entry
 				if ( isMainEntry ) {
-					checkGlobalReference = true;
 
 					if ( path.get('name').node === 'fn' ) {
 						foundPath = path.findParent((path) => path.isCallExpression() && path.get('callee.object').node && path.get('callee.object.name').node === 'feature' && !path.parentPath.isLogicalExpression());
@@ -92,7 +94,6 @@ const babelPlugin = ( options = {} ) => {
 				if ([...browserGlobals, ...customGlobals].includes(path.get('name').node)) {
 					const name = path.get('name').node;
 					if ( shouldHandleEnvironmentForPath(path, GLOBAL_REFERENCE_VARIABLE) ) {
-						checkGlobalReference = true;
 
 						// Modernizr.addTest('feature', ...);
 						const addTestNode = path.findParent((path) => path.isCallExpression() && path.get('callee.property').node && path.get('callee.property.name').node === 'addTest');
@@ -102,6 +103,8 @@ const babelPlugin = ( options = {} ) => {
 						const reassignmentNode = path.findParent((path) => path.isAssignmentExpression());
 						// ( ... ? ... : ... )
 						const conditionalExpressionNode = path.findParent((path) => path.isConditionalExpression() && path.get('test.left').node && path.get('test.left.name').node !== GLOBAL_REFERENCE_VARIABLE.name);
+						// function (){}()
+						const iifeNode = path.findParent((path) => path.isCallExpression() && !path.parentPath.isLogicalExpression() && path.get('callee').isFunctionExpression());
 
 						if (addTestNode) {
 							foundPath = addTestNode.get('arguments')[1];
@@ -115,10 +118,14 @@ const babelPlugin = ( options = {} ) => {
 						if (conditionalExpressionNode) {
 							foundPath = conditionalExpressionNode;
 						}
+						if ( iifeNode ) {
+							foundPath = iifeNode;
+						}
 					}
 				}
 
 				if ( foundPath ) {
+					addGlobalReferenceCheck = true;
 					const clone = t.cloneNode(foundPath.node);
 					foundPath.replaceWith(t.logicalExpression('&&', GLOBAL_REFERENCE_VARIABLE, clone));
 				}

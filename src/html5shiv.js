@@ -6,7 +6,7 @@ var _isBrowser = typeof window !== "undefined";
 var html5;
 
 if (!isSVG) {
-  (function (window, document) {
+  _isBrowser && function (window, document) {
     var version = '3.7.3';
     var options = window.html5 || {};
     var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
@@ -181,7 +181,7 @@ if (!isSVG) {
     if (typeof module == 'object' && module.exports) {
       module.exports = html5;
     }
-  })(_isBrowser && (typeof window !== 'undefined' ? window : undefined), document);
+  }(typeof window !== 'undefined' ? window : undefined, document);
 }
 
 export default html5;

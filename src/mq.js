@@ -2,7 +2,9 @@
 import ModernizrProto from './Modernizr.js';
 import injectElementWithStyles from './injectElementWithStyles.js';
 
-var mq = function () {
+var _isBrowser = typeof window !== "undefined";
+
+var mq = _isBrowser && function () {
   var matchMedia = window.matchMedia || window.msMatchMedia;
 
   if (matchMedia) {

@@ -3,7 +3,9 @@ import ModernizrProto from './Modernizr.js';
 import createElement from './createElement.js';
 import docElement from './docElement.js';
 
-var hasEvent = function () {
+var _isBrowser = typeof window !== "undefined";
+
+var hasEvent = _isBrowser && function () {
   var needsFallback = !('onblur' in docElement);
 
   function inner(eventName, element) {
