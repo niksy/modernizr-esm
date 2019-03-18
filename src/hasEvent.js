@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/hasEvent.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/hasEvent.js **/
 import ModernizrProto from './Modernizr.js';
 import createElement from './createElement.js';
 import docElement from './docElement.js';

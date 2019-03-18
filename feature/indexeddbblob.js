@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/indexeddbblob.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/indexeddbblob.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 import prefixed from '../src/prefixed.js';
 import './indexeddb.js';

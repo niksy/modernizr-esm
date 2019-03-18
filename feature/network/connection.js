@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/network/connection.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/network/connection.js **/
 import Modernizr from '../src/Modernizr.js';
 Modernizr.addTest('lowbandwidth', function () {
   var connection = navigator.connection || {

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/input/formtarget.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/input/formtarget.js **/
 import Modernizr from '../src/Modernizr.js';
 import createElement from '../src/createElement.js';
 Modernizr.addTest('inputformtarget', !!('formTarget' in createElement('input')), {

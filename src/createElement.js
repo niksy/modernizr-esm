@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/createElement.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/createElement.js **/
 import isSVG from './isSVG.js';
 
 function createElement() {

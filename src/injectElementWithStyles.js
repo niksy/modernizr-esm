@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/injectElementWithStyles.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/injectElementWithStyles.js **/
 import './Modernizr.js';
 import docElement from './docElement.js';
 import createElement from './createElement.js';

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/img/jpegxr.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/img/jpegxr.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var image = new Image();

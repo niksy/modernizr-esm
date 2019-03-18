@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/workers/sharedworkers.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/workers/sharedworkers.js **/
 import Modernizr from '../src/Modernizr.js';
 
 var _isBrowser = typeof window !== "undefined";

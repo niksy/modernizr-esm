@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/forms/fileinput.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/forms/fileinput.js **/
 import Modernizr from '../src/Modernizr.js';
 import createElement from '../src/createElement.js';
 Modernizr.addTest('fileinput', function () {

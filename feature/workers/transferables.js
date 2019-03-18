@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/workers/transferables.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/workers/transferables.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 import './blob.js';
 import './url/bloburls.js';

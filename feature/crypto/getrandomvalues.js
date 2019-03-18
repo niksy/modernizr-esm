@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/crypto/getrandomvalues.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/crypto/getrandomvalues.js **/
 import Modernizr from '../src/Modernizr.js';
 import prefixed from '../src/prefixed.js';
 import is from '../src/is.js';

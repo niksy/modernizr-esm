@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/hiddenscroll.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/hiddenscroll.js **/
 import Modernizr from '../src/Modernizr.js';
 import testStyles from '../src/testStyles.js';
 Modernizr.addTest('hiddenscroll', function () {

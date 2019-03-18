@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/feature-detects/es5/syntax.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/es5/syntax.js **/
 import Modernizr from '../src/Modernizr.js';
 Modernizr.addTest('es5syntax', function () {
   var value, obj, stringAccess, getter, setter, reservedWords, zeroWidthChars;

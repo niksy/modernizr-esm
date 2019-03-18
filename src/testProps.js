@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.0/src/testProps.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/testProps.js **/
 import contains from './contains.js';
 import mStyle from './mStyle.js';
 import createElement from './createElement.js';

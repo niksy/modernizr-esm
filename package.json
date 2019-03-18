@@ -53,7 +53,7 @@
     "karma-webpack": "^3.0.0",
     "lodash": "^4.17.11",
     "mocha": "^4.1.0",
-    "modernizr": "3.7.0",
+    "modernizr": "3.7.1",
     "np": "^3.0.4",
     "rollup": "^1.0.0",
     "rollup-plugin-amd": "^3.0.0",
