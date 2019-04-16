@@ -40,3 +40,4 @@ Modernizr.inputtypes = _isBrowser && function (props) {
 
   return inputs;
 }(inputtypes);
+export default Modernizr.inputtypes;
