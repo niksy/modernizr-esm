@@ -25,5 +25,4 @@ var fontface = _isBrowser && function () {
   }
 }();
 
-export default fontface;
 export default Modernizr.fontface;

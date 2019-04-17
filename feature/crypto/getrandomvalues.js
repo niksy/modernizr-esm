@@ -18,5 +18,4 @@ var getrandomvalues = _isBrowser && function () {
   Modernizr.addTest('getrandomvalues', !!supportsGetRandomValues);
 }();
 
-export default getrandomvalues;
 export default Modernizr.getrandomvalues;

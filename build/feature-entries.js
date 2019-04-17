@@ -37,8 +37,15 @@ const babelPlugin = () => {
 					modernizrImportPath = null;
 					normalizeModernizrImport = false;
 
-					// Store main entry import path where it only imports default export
 					path.get('body').forEach((path) => {
+						// Remove existing export declarations so we can create our own
+						if (
+							path.isExportDefaultDeclaration() ||
+							path.isExportNamedDeclaration()
+						) {
+							path.remove();
+						}
+						// Store main entry import path where it only imports default export
 						if (
 							path.isImportDeclaration() &&
 							path.get('specifiers').length === 1 &&
