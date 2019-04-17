@@ -146,6 +146,20 @@ const babelPlugin = () => {
 					}
 				}
 
+				/*
+				 * Collect all direct assignments to `Modernizr` if we
+				 * don’t have sync or async test to resolve export values
+				 */
+				if (path.isMemberExpression()) {
+					if (
+						exportValue !== 'string' &&
+						path.parentPath.isAssignmentExpression() &&
+						path.get('object.name').node === 'Modernizr'
+					) {
+						exportValue = path.get('property.name').node;
+					}
+				}
+
 				if (
 					typeof exportValue !== 'string' ||
 					exportValues.some(({ exportValue: existingExportValue }) => existingExportValue === exportValue)

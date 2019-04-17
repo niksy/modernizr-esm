@@ -19,3 +19,5 @@ Modernizr.input = _isBrowser && function (props) {
 
   return attrs;
 }(inputattrs);
+
+export default Modernizr.input;

@@ -38,4 +38,6 @@ Modernizr.addTest('formvalidation', function () {
   });
   return invalidFired;
 });
-export default Modernizr.formvalidation;
+export var formvalidation = Modernizr.formvalidation;
+export var formvalidationapi = Modernizr.formvalidationapi;
+export var formvalidationmessage = Modernizr.formvalidationmessage;

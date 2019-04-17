@@ -31,3 +31,4 @@ Modernizr.addAsyncTest(function () {
 
   canvas = undefined;
 });
+export default Modernizr.webglextensions;
