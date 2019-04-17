@@ -2,7 +2,7 @@
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 import docElement from '../src/docElement.js';
 import createElement from '../src/createElement.js';
-import './video.js';
+import '../video.js';
 Modernizr.addAsyncTest(function () {
   var timeout;
   var waitTime = 200;

@@ -2,8 +2,8 @@
 import Modernizr from '../src/Modernizr.js';
 import createElement from '../src/createElement.js';
 import getBody from '../src/getBody.js';
-import './inputtypes.js';
-import './forms/validation.js';
+import '../inputtypes.js';
+import './validation.js';
 Modernizr.addTest('localizednumber', function () {
   if (!Modernizr.inputtypes.number) {
     return false;

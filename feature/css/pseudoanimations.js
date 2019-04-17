@@ -2,7 +2,7 @@
 import Modernizr from '../src/Modernizr.js';
 import testStyles from '../src/testStyles.js';
 import prefixes from '../src/prefixes.js';
-import './css/animations.js';
+import './animations.js';
 Modernizr.addTest('csspseudoanimations', function () {
   var result = false;
 

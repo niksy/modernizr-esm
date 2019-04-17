@@ -2,7 +2,7 @@
 import Modernizr from '../src/Modernizr.js';
 import '../src/prefixed.js';
 import domPrefixes from '../src/domPrefixes.js';
-import './webrtc/peerconnection.js';
+import './peerconnection.js';
 Modernizr.addTest('datachannel', function () {
   if (!Modernizr.peerconnection) {
     return false;

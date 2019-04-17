@@ -5,7 +5,7 @@ const { default: generate } = require('@babel/generator');
 const t = require('@babel/types');
 const amd = require('rollup-plugin-amd');
 const { camelCase } = require('lodash');
-const { version } = require('./util');
+const { version, modernizrDir } = require('./util');
 const handleGlobalReference = require('./handle-global-reference');
 
 const babelPlugin = () => {
@@ -213,7 +213,13 @@ const rollupPlugins = [
 	amd({
 		rewire (moduleId, parentPath) {
 			if (moduleId.includes('test/')) {
-				return `./${moduleId.replace('test/', '')}.js`;
+				const resolveFrom = path.dirname(parentPath);
+				const modulePath = path.join(modernizrDir, `${moduleId.replace('test/', 'feature-detects/')}.js`);
+				const finalPath = path.relative(resolveFrom, modulePath);
+				if ( finalPath.includes('../') ) {
+					return finalPath;
+				}
+				return `./${finalPath}`;
 			}
 			if (
 				moduleId.includes('Modernizr') ||

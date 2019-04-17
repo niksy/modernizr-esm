@@ -3,7 +3,7 @@ import Modernizr from '../src/Modernizr.js';
 import createElement from '../src/createElement.js';
 import prefixes from '../src/prefixes.js';
 import testAllProps from '../src/testAllProps.js';
-import './css/supports.js';
+import './supports.js';
 Modernizr.addTest('cssfilters', function () {
   if (Modernizr.supports) {
     return testAllProps('filter', 'blur(2px)');
