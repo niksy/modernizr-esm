@@ -2,6 +2,15 @@
 
 ## [Unreleased][]
 
+### Changed
+
+- Remove existing export declarations
+
+### Fixed
+
+- Handle direct assignments to Modernizr object
+- Properly resolve feature paths
+
 ## [1.2.3][] - 2019-03-18
 
 ### Added
