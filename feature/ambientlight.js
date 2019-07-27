@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/ambientlight.js **/
-import Modernizr from '../src/Modernizr.js';
-import hasEvent from '../src/hasEvent.js';
+import Modernizr from "../src/Modernizr.js";
+import hasEvent from "../src/hasEvent.js";
 
 var _isBrowser = typeof window !== "undefined";
 

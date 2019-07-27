@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/mathml.js **/
-import Modernizr from '../src/Modernizr.js';
-import testStyles from '../src/testStyles.js';
+import Modernizr from "../src/Modernizr.js";
+import testStyles from "../src/testStyles.js";
 Modernizr.addTest('mathml', function () {
   var ret;
   testStyles('#modernizr{position:absolute;display:inline-block}', function (node) {

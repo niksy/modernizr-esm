@@ -1,9 +1,9 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/regions.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
-import docElement from '../src/docElement.js';
-import isSVG from '../src/isSVG.js';
-import prefixed from '../src/prefixed.js';
+import Modernizr from "../../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
+import docElement from "../../src/docElement.js";
+import isSVG from "../../src/isSVG.js";
+import prefixed from "../../src/prefixed.js";
 Modernizr.addTest('regions', function () {
   if (isSVG) {
     return false;

@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/img/sizes.js **/
-import createElement from '../src/createElement.js';
-import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var width1, width2, test;
   var image = createElement('img');

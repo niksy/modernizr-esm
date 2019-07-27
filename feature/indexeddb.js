@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/indexeddb.js **/
-import prefixed from '../src/prefixed.js';
+import prefixed from "../src/prefixed.js";
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var indexeddb;

@@ -1,8 +1,8 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/audio/autoplay.js **/
-import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
-import docElement from '../src/docElement.js';
-import createElement from '../src/createElement.js';
-import '../audio.js';
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
+import docElement from "../../src/docElement.js";
+import createElement from "../../src/createElement.js";
+import "../audio.js";
 Modernizr.addAsyncTest(function () {
   var timeout;
   var waitTime = 200;

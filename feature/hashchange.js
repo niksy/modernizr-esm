@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/hashchange.js **/
-import Modernizr from '../src/Modernizr.js';
-import hasEvent from '../src/hasEvent.js';
+import Modernizr from "../src/Modernizr.js";
+import hasEvent from "../src/hasEvent.js";
 Modernizr.addTest('hashchange', function () {
   if (hasEvent('hashchange', window) === false) {
     return false;

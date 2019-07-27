@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/cookies.js **/
-import Modernizr from '../src/Modernizr.js';
+import Modernizr from "../src/Modernizr.js";
 Modernizr.addTest('cookies', function () {
   try {
     document.cookie = 'cookietest=1';

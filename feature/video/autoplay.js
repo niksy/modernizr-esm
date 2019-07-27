@@ -1,8 +1,8 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/video/autoplay.js **/
-import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
-import docElement from '../src/docElement.js';
-import createElement from '../src/createElement.js';
-import '../video.js';
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
+import docElement from "../../src/docElement.js";
+import createElement from "../../src/createElement.js";
+import "../video.js";
 Modernizr.addAsyncTest(function () {
   var timeout;
   var waitTime = 200;

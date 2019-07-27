@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/websockets/binary.js **/
-import Modernizr from '../src/Modernizr.js';
+import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('websocketsbinary', function () {
   var protocol = 'https:' === location.protocol ? 'wss' : 'ws',
       protoBin;

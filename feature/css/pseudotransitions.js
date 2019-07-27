@@ -1,8 +1,8 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/pseudotransitions.js **/
-import Modernizr from '../src/Modernizr.js';
-import testStyles from '../src/testStyles.js';
-import prefixes from '../src/prefixes.js';
-import './transitions.js';
+import Modernizr from "../../src/Modernizr.js";
+import testStyles from "../../src/testStyles.js";
+import prefixes from "../../src/prefixes.js";
+import "./transitions.js";
 Modernizr.addTest('csspseudotransitions', function () {
   var result = false;
 

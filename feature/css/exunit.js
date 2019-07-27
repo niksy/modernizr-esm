@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/exunit.js **/
-import Modernizr from '../src/Modernizr.js';
-import modElem from '../src/modElem.js';
+import Modernizr from "../../src/Modernizr.js";
+import modElem from "../../src/modElem.js";
 Modernizr.addTest('cssexunit', function () {
   var elemStyle = modElem.elem.style;
   var supports;

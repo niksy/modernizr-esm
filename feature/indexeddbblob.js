@@ -1,7 +1,7 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/indexeddbblob.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
-import prefixed from '../src/prefixed.js';
-import './indexeddb.js';
+import prefixed from "../src/prefixed.js";
+import "./indexeddb.js";
 Modernizr.addAsyncTest(function () {
   var indexeddb;
   var dbname = 'detect-blob-support';

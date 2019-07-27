@@ -55,6 +55,7 @@
     "mocha": "^4.1.0",
     "modernizr": "3.7.1",
     "np": "^3.0.4",
+    "relative": "^3.0.2",
     "rollup": "^1.0.0",
     "rollup-plugin-amd": "^3.0.0",
     "sinon": "^5.1.1",

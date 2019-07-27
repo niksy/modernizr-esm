@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/contextmenu.js **/
-import Modernizr from '../src/Modernizr.js';
-import docElement from '../src/docElement.js';
+import Modernizr from "../src/Modernizr.js";
+import docElement from "../src/docElement.js";
 
 var _isBrowser = typeof window !== "undefined";
 

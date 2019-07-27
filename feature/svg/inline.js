@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/svg/inline.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
+import Modernizr from "../../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
 Modernizr.addTest('inlinesvg', function () {
   var div = createElement('div');
   div.innerHTML = '<svg/>';

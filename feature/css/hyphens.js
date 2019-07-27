@@ -1,8 +1,8 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/hyphens.js **/
-import prefixes from '../src/prefixes.js';
-import createElement from '../src/createElement.js';
-import testAllProps from '../src/testAllProps.js';
-import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
+import prefixes from "../../src/prefixes.js";
+import createElement from "../../src/createElement.js";
+import testAllProps from "../../src/testAllProps.js";
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var waitTime = 300;
   setTimeout(runHyphenTest, waitTime);

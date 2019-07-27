@@ -7,6 +7,7 @@ const amd = require('rollup-plugin-amd');
 const { camelCase } = require('lodash');
 const { version, modernizrDir } = require('./util');
 const handleGlobalReference = require('./handle-global-reference');
+const relative = require('relative');
 
 const babelPlugin = () => {
 
@@ -204,6 +205,14 @@ const babelPlugin = () => {
 							.node.replace('addTest', 'Modernizr'))
 					));
 				}
+				/*
+				 * Remove prefix for relative paths which we don’t allow Rollup
+				 * to touch.
+				 */
+				if (path.get('source.value').node.includes('@/')) {
+					const value = path.get('source.value').node;
+					path.get('source').replaceWith(t.stringLiteral(value.replace('@/','')));
+				}
 			}
 		}
 	};
@@ -212,25 +221,22 @@ const babelPlugin = () => {
 const rollupPlugins = [
 	amd({
 		rewire (moduleId, parentPath) {
+			let finalModuleId = moduleId;
 			if (moduleId.includes('test/')) {
-				const resolveFrom = path.dirname(parentPath);
-				const modulePath = path.join(modernizrDir, `${moduleId.replace('test/', 'feature-detects/')}.js`);
-				const finalPath = path.relative(resolveFrom, modulePath);
+				finalModuleId = moduleId.replace('test/', 'feature-detects/');
+				const finalPath = relative(parentPath, path.resolve(modernizrDir, `${finalModuleId}.js`));
 				if ( finalPath.includes('../') ) {
-					return finalPath;
+					return `@/${finalPath}`;
 				}
-				return `./${finalPath}`;
+				return `@/./${finalPath}`;
 			}
 			if (
 				moduleId.includes('Modernizr') ||
 				moduleId.includes('ModernizrProto')
 			) {
-				return `../src/Modernizr.js`;
+				finalModuleId = 'Modernizr';
 			}
-			if (moduleId.includes('addTest')) {
-				return `../src/addTest.js`;
-			}
-			return `../src/${moduleId}.js`;
+			return `@/${relative(parentPath, path.resolve(modernizrDir, `src/${finalModuleId}.js`))}`;
 		}
 	}),
 	{

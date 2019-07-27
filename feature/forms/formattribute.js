@@ -1,7 +1,7 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/forms/formattribute.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
-import docElement from '../src/docElement.js';
+import Modernizr from "../../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
+import docElement from "../../src/docElement.js";
 Modernizr.addTest('formattribute', function () {
   var form = createElement('form');
   var input = createElement('input');

@@ -1,6 +1,6 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/dom/createElement-attrs.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
+import Modernizr from "../../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
 Modernizr.addTest('createelementattrs', function () {
   try {
     return createElement('<input name="test" />').getAttribute('name') === 'test';

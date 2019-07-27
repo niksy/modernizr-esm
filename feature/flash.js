@@ -1,9 +1,9 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/flash.js **/
-import createElement from '../src/createElement.js';
-import docElement from '../src/docElement.js';
+import createElement from "../src/createElement.js";
+import docElement from "../src/docElement.js";
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
-import getBody from '../src/getBody.js';
-import isSVG from '../src/isSVG.js';
+import getBody from "../src/getBody.js";
+import isSVG from "../src/isSVG.js";
 Modernizr.addAsyncTest(function () {
   var attachBody = function (body) {
     if (!docElement.contains(body)) {

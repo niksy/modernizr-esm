@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/url/data-uri.js **/
-import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";
+import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   if (navigator.userAgent.indexOf('MSIE 7.') !== -1) {
     setTimeout(function () {

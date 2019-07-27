@@ -1,9 +1,9 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/forms/inputnumber-l10n.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
-import getBody from '../src/getBody.js';
-import '../inputtypes.js';
-import './validation.js';
+import Modernizr from "../../src/Modernizr.js";
+import createElement from "../../src/createElement.js";
+import getBody from "../../src/getBody.js";
+import "../inputtypes.js";
+import "./validation.js";
 Modernizr.addTest('localizednumber', function () {
   if (!Modernizr.inputtypes.number) {
     return false;

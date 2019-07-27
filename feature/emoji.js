@@ -1,7 +1,7 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/emoji.js **/
-import Modernizr from '../src/Modernizr.js';
-import createElement from '../src/createElement.js';
-import './canvastext.js';
+import Modernizr from "../src/Modernizr.js";
+import createElement from "../src/createElement.js";
+import "./canvastext.js";
 Modernizr.addTest('emoji', function () {
   if (!Modernizr.canvastext) {
     return false;

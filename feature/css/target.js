@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/target.js **/
-import Modernizr from '../src/Modernizr.js';
+import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('target', function () {
   var doc = window.document;
 

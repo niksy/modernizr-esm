@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Fixed
+
+- Incorrect import paths in feature modules in sub-directories
+
 ## [1.3.0][] - 2019-04-17
 
 ### Changed

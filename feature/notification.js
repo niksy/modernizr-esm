@@ -1,5 +1,5 @@
 /** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/notification.js **/
-import Modernizr from '../src/Modernizr.js';
+import Modernizr from "../src/Modernizr.js";
 Modernizr.addTest('notification', function () {
   if (!window.Notification || !window.Notification.requestPermission) {
     return false;
