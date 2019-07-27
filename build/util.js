@@ -1,11 +1,11 @@
 const path = require('path');
 
-const modernizrDir = path.resolve(
+const modernizrDirectory = path.resolve(
 	path.dirname(require.resolve('modernizr')),
 	'../'
 );
 
-const { version } = require(path.resolve(modernizrDir, 'package.json'));
+const { version } = require(path.resolve(modernizrDirectory, 'package.json'));
 
 const entryDependencies = [
 	'Modernizr',
@@ -17,5 +17,5 @@ const entryDependencies = [
 ];
 
 module.exports.version = version;
-module.exports.modernizrDir = modernizrDir;
+module.exports.modernizrDir = modernizrDirectory;
 module.exports.entryDependencies = entryDependencies;

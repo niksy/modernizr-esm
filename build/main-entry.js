@@ -9,7 +9,6 @@ const { modernizrDir, entryDependencies, version } = require('./util');
 const handleGlobalReference = require('./handle-global-reference');
 
 const babelPlugin = () => {
-
 	const addToQueueNode = () => {
 		return template(`
 			for ( var i = 0; i < Modernizr._q.length; i++ ) {
@@ -18,13 +17,16 @@ const babelPlugin = () => {
 		`)();
 	};
 
-	const onListenerNode = (cb) => t.expressionStatement(t.callExpression(
-		t.memberExpression(
-			t.identifier('Modernizr'),
-			t.identifier('on')
-		),
-		[ t.identifier('feature'), t.identifier(cb) ]
-	));
+	const onListenerNode = (callback) =>
+		t.expressionStatement(
+			t.callExpression(
+				t.memberExpression(
+					t.identifier('Modernizr'),
+					t.identifier('on')
+				),
+				[t.identifier('feature'), t.identifier(callback)]
+			)
+		);
 
 	const asyncTestListenerNode = () => {
 		return template(`
@@ -63,7 +65,7 @@ const babelPlugin = () => {
 
 	return {
 		visitor: {
-			Program (path) {
+			Program(path) {
 				/*
 				 * Export `addTest` and `createAsyncTestListener` as named exports
 				 * so they can be used in async tests
@@ -81,24 +83,28 @@ const babelPlugin = () => {
 					])
 				]);
 			},
-			StringLiteral (path) {
+			StringLiteral(path) {
 				// Replace version placeholder in Modernizr prototype to current version
 				if (path.get('value').node === '__VERSION__') {
 					path.replaceWith(t.stringLiteral(version));
 				}
 			},
-			Identifier (path) {
+			Identifier(path) {
 				// Remove `Modernizr.addTest` from queue callback since we call it directly
 				if (path.get('name').node === 'addTest') {
-					const addTestParent = path.findParent((path) => path.isAssignmentExpression());
+					const addTestParent = path.findParent((path) =>
+						path.isAssignmentExpression()
+					);
 					if (addTestParent !== null) {
 						addTestParent.remove();
 					}
 				}
 				// Normalize references to `Modernizr` and `hasOwnProp`
-				[ 'Modernizr$1', 'hasOwnProp$1' ].forEach((prop) => {
-					if (path.get('name').node === prop) {
-						const variableDeclarationParent = path.findParent((path) => path.isVariableDeclaration());
+				['Modernizr$1', 'hasOwnProp$1'].forEach((property) => {
+					if (path.get('name').node === property) {
+						const variableDeclarationParent = path.findParent(
+							(path) => path.isVariableDeclaration()
+						);
 						if (
 							variableDeclarationParent &&
 							variableDeclarationParent
@@ -107,12 +113,14 @@ const babelPlugin = () => {
 						) {
 							variableDeclarationParent.remove();
 						} else {
-							path.replaceWith(t.identifier(prop.replace('$1', '')));
+							path.replaceWith(
+								t.identifier(property.replace('$1', ''))
+							);
 						}
 					}
 				});
 			},
-			VariableDeclaration (path) {
+			VariableDeclaration(path) {
 				// Remove `classes` variable
 				if (
 					path.get('declarations')[0].get('id.name').node ===
@@ -121,15 +129,17 @@ const babelPlugin = () => {
 					path.remove();
 				}
 			},
-			ImportDeclaration (path) {
+			ImportDeclaration(path) {
 				// Remove `classes` and `setClasses` import
 				if (
-					[ 'classes', 'setClasses' ].includes(path.get('specifiers')[0].get('local.name').node)
+					['classes', 'setClasses'].includes(
+						path.get('specifiers')[0].get('local.name').node
+					)
 				) {
 					path.remove();
 				}
 			},
-			ExportDefaultDeclaration (path) {
+			ExportDefaultDeclaration(path) {
 				if (path.get('declaration.name').node === 'addTest') {
 					// Add `addTestResult` function declaration
 					path.insertBefore(addTestResultNode());
@@ -138,10 +148,12 @@ const babelPlugin = () => {
 					path.insertBefore(asyncTestListenerNode());
 
 					// Export `Modernizr` as default export instead of `addTest`
-					path.replaceWith(t.exportDefaultDeclaration(t.identifier('Modernizr')));
+					path.replaceWith(
+						t.exportDefaultDeclaration(t.identifier('Modernizr'))
+					);
 				}
 			},
-			MemberExpression (path) {
+			MemberExpression(path) {
 				/*
 				 * Replace `testRunner` references as array pushing to `tests`
 				 * This is due to AMD resolving
@@ -167,18 +179,22 @@ const babelPlugin = () => {
 
 				// Remove `classes` reference
 				if (path.get('object.name').node === 'classes') {
-					const parent = path.findParent((path) => path.isExpressionStatement());
+					const parent = path.findParent((path) =>
+						path.isExpressionStatement()
+					);
 					parent.remove();
 				}
 			},
-			CallExpression (path) {
+			CallExpression(path) {
 				// Remove `setClasses` function call
 				if (path.get('callee.name').node === 'setClasses') {
-					const parent = path.findParent((path) => path.isExpressionStatement());
+					const parent = path.findParent((path) =>
+						path.isExpressionStatement()
+					);
 					parent.remove();
 				}
 			},
-			ObjectProperty (path) {
+			ObjectProperty(path) {
 				/*
 				 * Add callers to `testRunner` in `Modernizr.addTest` and `Modernizr.addAsyncTest`
 				 * Reset `tests` to empty array
@@ -186,15 +202,21 @@ const babelPlugin = () => {
 				 */
 				if (
 					path.get('key').isIdentifier() &&
-					[ 'addTest', 'addAsyncTest' ].includes(path.get('key.name').node)
+					['addTest', 'addAsyncTest'].includes(
+						path.get('key.name').node
+					)
 				) {
 					path.get('value.body').pushContainer('body', [
-						t.expressionStatement(t.callExpression(t.identifier('testRunner'), [])),
-						t.expressionStatement(t.assignmentExpression(
-							'=',
-							t.identifier('tests'),
-							t.arrayExpression()
-						)),
+						t.expressionStatement(
+							t.callExpression(t.identifier('testRunner'), [])
+						),
+						t.expressionStatement(
+							t.assignmentExpression(
+								'=',
+								t.identifier('tests'),
+								t.arrayExpression()
+							)
+						),
 						addToQueueNode()
 					]);
 				}
@@ -206,18 +228,30 @@ const babelPlugin = () => {
 					path.remove();
 				}
 			},
-			IfStatement (path) {
+			IfStatement(path) {
 				// Remove duplicate code for feature assigning, replacing it with `addTestResult` function call
 				if (
-					(
-						path.get('test.left').isMemberExpression() &&
-						path.get('test.left.object.name').node === 'featureNameSplit' &&
-						path.get('test.right.value').node === 1
-					) &&
-					(path.findParent((path) => path.isFunctionDeclaration() && path.get('id.name').node === 'addTestResult')) === null
+					path.get('test.left').isMemberExpression() &&
+					path.get('test.left.object.name').node ===
+						'featureNameSplit' &&
+					path.get('test.right.value').node === 1 &&
+					path.findParent(
+						(path) =>
+							path.isFunctionDeclaration() &&
+							path.get('id.name').node === 'addTestResult'
+					) === null
 				) {
-					const identifierName = path.get('consequent.body')[0].get('expression.right.name').node;
-					path.replaceWith(t.expressionStatement(t.callExpression(t.identifier('addTestResult'), [t.identifier('featureNameSplit'), t.identifier(identifierName)])));
+					const identifierName = path
+						.get('consequent.body')[0]
+						.get('expression.right.name').node;
+					path.replaceWith(
+						t.expressionStatement(
+							t.callExpression(t.identifier('addTestResult'), [
+								t.identifier('featureNameSplit'),
+								t.identifier(identifierName)
+							])
+						)
+					);
 				}
 			}
 		}
@@ -226,7 +260,7 @@ const babelPlugin = () => {
 
 const rollupPlugins = [
 	amd({
-		rewire (moduleId, parentPath) {
+		rewire(moduleId, parentPath) {
 			if (
 				!moduleId.includes('ModernizrProto') &&
 				!moduleId.includes('Modernizr') &&
@@ -250,15 +284,18 @@ const rollupPlugins = [
 		}
 	}),
 	{
-		async renderChunk (source) {
+		async renderChunk(source) {
 			const ast = parse(source, {
-				sourceType: 'module',
+				sourceType: 'module'
 			});
 			traverse(ast, babelPlugin().visitor);
 			traverse(ast, handleGlobalReference({ isMainEntry: true }).visitor);
 			const result = generate(ast);
 			return `/** Original source code: \n${entryDependencies
-				.map((entryDependancy) => ` * https://github.com/Modernizr/Modernizr/blob/v${version}/src/${entryDependancy}`)
+				.map(
+					(entryDependancy) =>
+						` * https://github.com/Modernizr/Modernizr/blob/v${version}/src/${entryDependancy}`
+				)
 				.join('\n')}\n**/\n${result.code}`;
 		}
 	}
@@ -274,7 +311,9 @@ const rollupConfig = (dist, file) => ({
 	plugins: rollupPlugins,
 	external: (id) => {
 		if (
-			entryDependencies.every((entryDependancy) => !id.includes(entryDependancy))
+			entryDependencies.every(
+				(entryDependancy) => !id.includes(entryDependancy)
+			)
 		) {
 			return true;
 		}

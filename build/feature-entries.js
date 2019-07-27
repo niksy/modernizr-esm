@@ -10,29 +10,30 @@ const handleGlobalReference = require('./handle-global-reference');
 const relative = require('relative');
 
 const babelPlugin = () => {
-
 	let exportValues = [];
 	let modernizrImportPath = null;
 	let normalizeModernizrImport = false;
 
-	const namedExportNode = (exportValue, assignment) => t.exportNamedDeclaration(
-		t.variableDeclaration('var', [
-			t.variableDeclarator(
-				t.identifier(camelCase(exportValue)),
-				assignment
-			)
-		]),
-		[]
-	);
+	const namedExportNode = (exportValue, assignment) =>
+		t.exportNamedDeclaration(
+			t.variableDeclaration('var', [
+				t.variableDeclarator(
+					t.identifier(camelCase(exportValue)),
+					assignment
+				)
+			]),
+			[]
+		);
 
-	const asyncTestListenerNode = (exportValue) => t.callExpression(t.identifier('createAsyncTestListener'), [
-		t.stringLiteral(exportValue)
-	]);
+	const asyncTestListenerNode = (exportValue) =>
+		t.callExpression(t.identifier('createAsyncTestListener'), [
+			t.stringLiteral(exportValue)
+		]);
 
 	return {
 		visitor: {
 			Program: {
-				enter (path) {
+				enter(path) {
 					// Reset values on entering file
 					exportValues = [];
 					modernizrImportPath = null;
@@ -50,13 +51,14 @@ const babelPlugin = () => {
 						if (
 							path.isImportDeclaration() &&
 							path.get('specifiers').length === 1 &&
-							path.get('specifiers')[0].get('local.name').node === 'Modernizr'
+							path.get('specifiers')[0].get('local.name').node ===
+								'Modernizr'
 						) {
 							modernizrImportPath = path;
 						}
 					});
 				},
-				exit (path) {
+				exit(path) {
 					/*
 					 * If we have more than one export, we create named exports,
 					 * and we take care if it’s sync or async test. We export
@@ -95,34 +97,46 @@ const babelPlugin = () => {
 							'body',
 							exportValues.map(({ exportValue, isSyncTest }) => {
 								if (isSyncTest) {
-									return t.exportDefaultDeclaration(t.memberExpression(
-										t.identifier('Modernizr'),
-										t.identifier(exportValue)
-									));
+									return t.exportDefaultDeclaration(
+										t.memberExpression(
+											t.identifier('Modernizr'),
+											t.identifier(exportValue)
+										)
+									);
 								}
-								return t.exportDefaultDeclaration(asyncTestListenerNode(exportValue));
+								return t.exportDefaultDeclaration(
+									asyncTestListenerNode(exportValue)
+								);
 							})
 						);
 					}
 
-					// If import named exports from main entry and
-					// we already import default export from main entry,
-					// remove default export import
-					if ( normalizeModernizrImport && modernizrImportPath !== null ) {
+					/*
+					 * If import named exports from main entry and
+					 * we already import default export from main entry,
+					 * remove default export import
+					 */
+					if (
+						normalizeModernizrImport &&
+						modernizrImportPath !== null
+					) {
 						modernizrImportPath.remove();
 					}
-
 				}
 			},
-			'MemberExpression|CallExpression' (path) {
+			'MemberExpression|CallExpression'(path) {
 				const program = path.findParent((path) => path.isProgram());
 				let exportValue;
 
 				// Replace all `Modernizr._config` references to their default values
 				if (path.isMemberExpression()) {
 					if (path.get('property.name').node === '_config') {
-						path.parentPath.replaceWith(t.booleanLiteral(path.parentPath.get('property.name').node !==
-									'classPrefix'));
+						path.parentPath.replaceWith(
+							t.booleanLiteral(
+								path.parentPath.get('property.name').node !==
+									'classPrefix'
+							)
+						);
 					}
 				}
 
@@ -131,12 +145,14 @@ const babelPlugin = () => {
 				 * export values
 				 */
 				if (path.isMemberExpression()) {
-					const args = path.parentPath.get('arguments');
+					const arguments_ = path.parentPath.get('arguments');
 					if (
 						path.get('property.name').node === 'addTest' &&
-						(args && args[0] && args[0].isStringLiteral())
+						(arguments_ &&
+							arguments_[0] &&
+							arguments_[0].isStringLiteral())
 					) {
-						exportValue = args[0].get('value').node;
+						exportValue = arguments_[0].get('value').node;
 					}
 				}
 
@@ -145,12 +161,12 @@ const babelPlugin = () => {
 				 * export values
 				 */
 				if (path.isCallExpression()) {
-					const args = path.get('arguments');
+					const arguments_ = path.get('arguments');
 					if (
 						path.get('callee.name').node === 'addTest' &&
-						(args && args[0].isStringLiteral())
+						(arguments_ && arguments_[0].isStringLiteral())
 					) {
-						exportValue = args[0].get('value').node;
+						exportValue = arguments_[0].get('value').node;
 					}
 				}
 
@@ -170,7 +186,10 @@ const babelPlugin = () => {
 
 				if (
 					typeof exportValue !== 'string' ||
-					exportValues.some(({ exportValue: existingExportValue }) => existingExportValue === exportValue)
+					exportValues.some(
+						({ exportValue: existingExportValue }) =>
+							existingExportValue === exportValue
+					)
 				) {
 					return;
 				}
@@ -179,7 +198,7 @@ const babelPlugin = () => {
 					isSyncTest: path.isMemberExpression()
 				});
 			},
-			ImportDeclaration (path) {
+			ImportDeclaration(path) {
 				/*
 				 * References to `addTest` import should be replaced with
 				 * named imports `addTest` and `createAsyncTestListener` coming
@@ -188,22 +207,32 @@ const babelPlugin = () => {
 				 */
 				if (path.get('source.value').node.includes('addTest.js')) {
 					normalizeModernizrImport = true;
-					path.replaceWith(t.importDeclaration(
-						[
-							...(modernizrImportPath !== null ? [t.importDefaultSpecifier(t.identifier('Modernizr'))] : []),
-							t.importSpecifier(
-								t.identifier('addTest'),
-								t.identifier('addTest')
-							),
-							t.importSpecifier(
-								t.identifier('createAsyncTestListener'),
-								t.identifier('createAsyncTestListener')
+					path.replaceWith(
+						t.importDeclaration(
+							[
+								...(modernizrImportPath !== null
+									? [
+											t.importDefaultSpecifier(
+												t.identifier('Modernizr')
+											)
+									  ]
+									: []),
+								t.importSpecifier(
+									t.identifier('addTest'),
+									t.identifier('addTest')
+								),
+								t.importSpecifier(
+									t.identifier('createAsyncTestListener'),
+									t.identifier('createAsyncTestListener')
+								)
+							],
+							t.stringLiteral(
+								path
+									.get('source.value')
+									.node.replace('addTest', 'Modernizr')
 							)
-						],
-						t.stringLiteral(path
-							.get('source.value')
-							.node.replace('addTest', 'Modernizr'))
-					));
+						)
+					);
 				}
 				/*
 				 * Remove prefix for relative paths which we don’t allow Rollup
@@ -211,7 +240,9 @@ const babelPlugin = () => {
 				 */
 				if (path.get('source.value').node.includes('@/')) {
 					const value = path.get('source.value').node;
-					path.get('source').replaceWith(t.stringLiteral(value.replace('@/','')));
+					path.get('source').replaceWith(
+						t.stringLiteral(value.replace('@/', ''))
+					);
 				}
 			}
 		}
@@ -220,12 +251,15 @@ const babelPlugin = () => {
 
 const rollupPlugins = [
 	amd({
-		rewire (moduleId, parentPath) {
+		rewire(moduleId, parentPath) {
 			let finalModuleId = moduleId;
 			if (moduleId.includes('test/')) {
 				finalModuleId = moduleId.replace('test/', 'feature-detects/');
-				const finalPath = relative(parentPath, path.resolve(modernizrDir, `${finalModuleId}.js`));
-				if ( finalPath.includes('../') ) {
+				const finalPath = relative(
+					parentPath,
+					path.resolve(modernizrDir, `${finalModuleId}.js`)
+				);
+				if (finalPath.includes('../')) {
 					return `@/${finalPath}`;
 				}
 				return `@/./${finalPath}`;
@@ -236,20 +270,21 @@ const rollupPlugins = [
 			) {
 				finalModuleId = 'Modernizr';
 			}
-			return `@/${relative(parentPath, path.resolve(modernizrDir, `src/${finalModuleId}.js`))}`;
+			return `@/${relative(
+				parentPath,
+				path.resolve(modernizrDir, `src/${finalModuleId}.js`)
+			)}`;
 		}
 	}),
 	{
-		async renderChunk (source, options) {
+		async renderChunk(source, options) {
 			const ast = parse(source, {
-				sourceType: 'module',
+				sourceType: 'module'
 			});
 			traverse(ast, babelPlugin().visitor);
 			traverse(ast, handleGlobalReference().visitor);
 			const result = generate(ast);
-			return `/** Original source code: https://github.com/Modernizr/Modernizr/blob/v${version}/feature-detects/${
-				options.fileName
-			} **/\n${result.code}`;
+			return `/** Original source code: https://github.com/Modernizr/Modernizr/blob/v${version}/feature-detects/${options.fileName} **/\n${result.code}`;
 		}
 	}
 ];

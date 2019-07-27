@@ -80,7 +80,11 @@ setClasses([`${emoji ? '' : 'no-'}emoji`]);
 MIT © [Ivan Nikolić](http://ivannikolic.com)  
 MIT © [Modernizr](https://modernizr.com/)
 
+<!-- prettier-ignore-start -->
+
 [ci]: https://travis-ci.com/niksy/modernizr-esm
 [ci-img]: https://travis-ci.com/niksy/modernizr-esm.svg?branch=master
 [browserstack]: https://www.browserstack.com/
 [browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=aFhHRXNHY0UranNzQWJabHB6N3FUYjNwUnNkTzJJMkxkVCt6NUFCd1JUcz0tLUdrVkgrRUpKN2U5ODRSRlkxTnVYZ3c9PQ==--99d655e7bb05a3806890f6ea29c0075892b28010
+
+<!-- prettier-ignore-end -->
