@@ -12,6 +12,8 @@ Features:
 * No global modifications like setting classes on `html` element
 * Ignores browser globals when imported directly in SSR environment
 
+**[Try it now!](https://codesandbox.io/s/demo-i942i?expanddevtools=1&fontsize=14)**
+
 Refer to [original Modernizr documentation](https://github.com/Modernizr/Modernizr/blob/master/README.md) for more information.
 
 ## Install
