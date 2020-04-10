@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/websockets.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/websockets.js **/
 import Modernizr from "../src/Modernizr.js";
 var supports = false;
 

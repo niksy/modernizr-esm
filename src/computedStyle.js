@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/computedStyle.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/computedStyle.js **/
 function computedStyle(elem, pseudo, prop) {
   var result;
 

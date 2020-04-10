@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/testXhrType.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/testXhrType.js **/
 var testXhrType = function (type) {
   if (typeof XMLHttpRequest === 'undefined') {
     return false;

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/img/webp-animation.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/img/webp-animation.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var image = new Image();

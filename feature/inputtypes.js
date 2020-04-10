@@ -1,21 +1,18 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/inputtypes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/inputtypes.js **/
 import Modernizr from "../src/Modernizr.js";
 import inputElem from "../src/inputElem.js";
 import docElement from "../src/docElement.js";
 
 var _isBrowser = typeof window !== "undefined";
 
-var inputtypes = 'search tel url email datetime date month week time datetime-local number range color'.split(' ');
-var inputs = {};
-
-Modernizr.inputtypes = _isBrowser && function (props) {
-  var len = props.length;
+_isBrowser && function () {
+  var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week', 'time', 'datetime-local', 'number', 'range', 'color'];
   var smile = '1)';
   var inputElemType;
   var defaultView;
   var bool;
 
-  for (var i = 0; i < len; i++) {
+  for (var i = 0; i < props.length; i++) {
     inputElem.setAttribute('type', inputElemType = props[i]);
     bool = inputElem.type !== 'text' && 'style' in inputElem;
 
@@ -35,10 +32,7 @@ Modernizr.inputtypes = _isBrowser && function (props) {
       }
     }
 
-    inputs[props[i]] = !!bool;
+    Modernizr.addTest('inputtypes.' + inputElemType, !!bool);
   }
-
-  return inputs;
-}(inputtypes);
-
+}();
 export default Modernizr.inputtypes;

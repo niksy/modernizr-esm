@@ -1,10 +1,10 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/img/sizes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/img/sizes.js **/
 import createElement from "../../src/createElement.js";
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var width1, width2, test;
   var image = createElement('img');
-  var isSizes = 'sizes' in image;
+  var isSizes = ('sizes' in image);
 
   if (!isSizes && 'srcset' in image) {
     width2 = 'data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==';

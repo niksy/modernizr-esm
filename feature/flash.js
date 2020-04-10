@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/flash.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/flash.js **/
 import createElement from "../src/createElement.js";
 import docElement from "../src/docElement.js";
 import Modernizr, { addTest, createAsyncTestListener } from "../src/Modernizr.js";

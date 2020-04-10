@@ -1,23 +1,23 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/url/data-uri.js **/
-import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/url/data-uri.js **/
+import Modernizr from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   if (navigator.userAgent.indexOf('MSIE 7.') !== -1) {
     setTimeout(function () {
-      addTest('datauri', false);
+      Modernizr.addTest('datauri', new Boolean(false));
     }, 10);
   }
 
   var datauri = new Image();
 
   datauri.onerror = function () {
-    addTest('datauri', false);
+    Modernizr.addTest('datauri', new Boolean(false));
   };
 
   datauri.onload = function () {
     if (datauri.width === 1 && datauri.height === 1) {
       testOver32kb();
     } else {
-      addTest('datauri', false);
+      Modernizr.addTest('datauri', new Boolean(false));
     }
   };
 
@@ -27,15 +27,13 @@ Modernizr.addAsyncTest(function () {
     var datauriBig = new Image();
 
     datauriBig.onerror = function () {
-      addTest('datauri', true);
-      Modernizr.datauri = new Boolean(true);
-      Modernizr.datauri.over32kb = false;
+      Modernizr.addTest('datauri', new Boolean(true));
+      Modernizr.addTest('datauri.over32kb', false);
     };
 
     datauriBig.onload = function () {
-      addTest('datauri', true);
-      Modernizr.datauri = new Boolean(true);
-      Modernizr.datauri.over32kb = datauriBig.width === 1 && datauriBig.height === 1;
+      Modernizr.addTest('datauri', new Boolean(true));
+      Modernizr.addTest('datauri.over32kb', datauriBig.width === 1 && datauriBig.height === 1);
     };
 
     var base64str = 'R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
@@ -47,4 +45,5 @@ Modernizr.addAsyncTest(function () {
     datauriBig.src = 'data:image/gif;base64,' + base64str;
   }
 });
-export default createAsyncTestListener("datauri");
+export var datauri = Modernizr.datauri;
+export var datauriOver32Kb = Modernizr.datauri.over32kb;

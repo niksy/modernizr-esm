@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/url/bloburls.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/url/bloburls.js **/
 import Modernizr from "../../src/Modernizr.js";
 import prefixed from "../../src/prefixed.js";
 

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/hyphens.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/hyphens.js **/
 import prefixes from "../../src/prefixes.js";
 import createElement from "../../src/createElement.js";
 import testAllProps from "../../src/testAllProps.js";
@@ -86,6 +86,8 @@ Modernizr.addAsyncTest(function () {
         var result = false;
         var textrange;
         var firstChild = document.body.firstElementChild || document.body.firstChild;
+        dummy.style.cssText = 'position:fixed;top:0;';
+        div.style.cssText = 'position:fixed;top:0;';
         div.innerHTML = testword + delimiter + testword;
         document.body.insertBefore(div, firstChild);
         document.body.insertBefore(dummy, div);

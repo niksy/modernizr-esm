@@ -1,23 +1,37 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/video.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/video.js **/
 import Modernizr from "../src/Modernizr.js";
 import createElement from "../src/createElement.js";
-Modernizr.addTest('video', function () {
+
+(function () {
   var elem = createElement('video');
-  var bool = false;
+  Modernizr.addTest('video', function () {
+    var bool = false;
+
+    try {
+      bool = !!elem.canPlayType;
+
+      if (bool) {
+        bool = new Boolean(bool);
+      }
+    } catch (e) {}
+
+    return bool;
+  });
 
   try {
-    bool = !!elem.canPlayType;
-
-    if (bool) {
-      bool = new Boolean(bool);
-      bool.ogg = elem.canPlayType('video/ogg; codecs="theora"').replace(/^no$/, '');
-      bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/, '');
-      bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/, '');
-      bool.vp9 = elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, '');
-      bool.hls = elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, '');
+    if (!!elem.canPlayType) {
+      Modernizr.addTest('video.ogg', elem.canPlayType('video/ogg; codecs="theora"').replace(/^no$/, ''));
+      Modernizr.addTest('video.h264', elem.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/, ''));
+      Modernizr.addTest('video.webm', elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/, ''));
+      Modernizr.addTest('video.vp9', elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, ''));
+      Modernizr.addTest('video.hls', elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, ''));
     }
   } catch (e) {}
+})();
 
-  return bool;
-});
-export default Modernizr.video;
+export var video = Modernizr.video;
+export var videoOgg = Modernizr.video.ogg;
+export var videoH264 = Modernizr.video.h264;
+export var videoWebm = Modernizr.video.webm;
+export var videoVp9 = Modernizr.video.vp9;
+export var videoHls = Modernizr.video.hls;

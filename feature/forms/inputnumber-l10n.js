@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/forms/inputnumber-l10n.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/forms/inputnumber-l10n.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 import getBody from "../../src/getBody.js";
@@ -18,7 +18,7 @@ Modernizr.addTest('localizednumber', function () {
   var firstChild = body.firstElementChild || body.firstChild;
   var result;
   body.insertBefore(div, firstChild);
-  div.innerHTML = '<input type="number" value="1.0" step="0.1"/>';
+  div.innerHTML = '<input type="number" value="1.0" step="0.1" style="position: fixed; top: 0;" />';
   var input = div.childNodes[0];
   body.appendChild(div);
   input.focus();

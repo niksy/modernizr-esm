@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/valid.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/valid.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 import createElement from "../../src/createElement.js";

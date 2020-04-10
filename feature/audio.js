@@ -1,23 +1,37 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/audio.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/audio.js **/
 import Modernizr from "../src/Modernizr.js";
 import createElement from "../src/createElement.js";
-Modernizr.addTest('audio', function () {
+
+(function () {
   var elem = createElement('audio');
-  var bool = false;
+  Modernizr.addTest('audio', function () {
+    var bool = false;
+
+    try {
+      bool = !!elem.canPlayType;
+
+      if (bool) {
+        bool = new Boolean(bool);
+      }
+    } catch (e) {}
+
+    return bool;
+  });
 
   try {
-    bool = !!elem.canPlayType;
-
-    if (bool) {
-      bool = new Boolean(bool);
-      bool.ogg = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
-      bool.mp3 = elem.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, '');
-      bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') || elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, '');
-      bool.wav = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
-      bool.m4a = (elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')).replace(/^no$/, '');
+    if (!!elem.canPlayType) {
+      Modernizr.addTest('audio.ogg', elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.mp3', elem.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.opus', elem.canPlayType('audio/ogg; codecs="opus"') || elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.wav', elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ''));
+      Modernizr.addTest('audio.m4a', (elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')).replace(/^no$/, ''));
     }
   } catch (e) {}
+})();
 
-  return bool;
-});
-export default Modernizr.audio;
+export var audio = Modernizr.audio;
+export var audioOgg = Modernizr.audio.ogg;
+export var audioMp3 = Modernizr.audio.mp3;
+export var audioOpus = Modernizr.audio.opus;
+export var audioWav = Modernizr.audio.wav;
+export var audioM4A = Modernizr.audio.m4a;

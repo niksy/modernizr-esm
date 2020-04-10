@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/backgroundrepeat.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/backgroundrepeat.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testAllProps from "../../src/testAllProps.js";
 Modernizr.addTest('bgrepeatround', testAllProps('backgroundRepeat', 'round'));

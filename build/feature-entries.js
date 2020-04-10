@@ -146,6 +146,20 @@ const babelPlugin = () => {
 				 */
 				if (path.isMemberExpression()) {
 					const arguments_ = path.parentPath.get('arguments');
+					/**
+					 * Expression like `'inputtypes.' + inputElemType`
+					 */
+					if (
+						path.get('property.name').node === 'addTest' &&
+						(arguments_ &&
+							arguments_[0] &&
+							arguments_[0].isBinaryExpression())
+					) {
+						exportValue = arguments_[0].get('left.value').node.split('.')[0];
+					}
+					/**
+					 * Expression like `'postmessage'`
+					 */
 					if (
 						path.get('property.name').node === 'addTest' &&
 						(arguments_ &&

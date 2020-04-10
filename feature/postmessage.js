@@ -1,18 +1,19 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/postmessage.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/postmessage.js **/
 import Modernizr from "../src/Modernizr.js";
 
 var _isBrowser = typeof window !== "undefined";
 
-var support = _isBrowser && new Boolean('postMessage' in window);
-support.structuredclones = true;
+var bool = true;
 
 try {
   window.postMessage({
     toString: function () {
-      support.structuredclones = false;
+      bool = false;
     }
   }, '*');
 } catch (e) {}
 
-Modernizr.addTest('postmessage', support);
-export default Modernizr.postmessage;
+Modernizr.addTest('postmessage', _isBrowser && new Boolean('postMessage' in window));
+Modernizr.addTest('postmessage.structuredclones', bool);
+export var postmessage = Modernizr.postmessage;
+export var postmessageStructuredclones = Modernizr.postmessage.structuredclones;

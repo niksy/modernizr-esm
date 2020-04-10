@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/src/load.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/load.js **/
 import ModernizrProto from './Modernizr.js';
 
 var _isBrowser = typeof window !== "undefined";

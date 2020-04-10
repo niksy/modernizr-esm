@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/chunit.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/chunit.js **/
 import Modernizr from "../../src/Modernizr.js";
 import modElem from "../../src/modElem.js";
 Modernizr.addTest('csschunit', function () {

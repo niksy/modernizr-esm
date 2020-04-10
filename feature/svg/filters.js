@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/svg/filters.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/svg/filters.js **/
 import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('svgfilters', function () {
   var result = false;

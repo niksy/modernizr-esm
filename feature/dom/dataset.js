@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/dom/dataset.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/dom/dataset.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 Modernizr.addTest('dataset', function () {

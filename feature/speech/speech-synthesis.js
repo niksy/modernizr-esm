@@ -1,7 +1,10 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/speech/speech-synthesis.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/speech/speech-synthesis.js **/
 import Modernizr from "../../src/Modernizr.js";
-
-var _isBrowser = typeof window !== "undefined";
-
-Modernizr.addTest('speechsynthesis', _isBrowser && 'SpeechSynthesisUtterance' in window);
+Modernizr.addTest('speechsynthesis', function () {
+  try {
+    return 'SpeechSynthesisUtterance' in window;
+  } catch (e) {
+    return false;
+  }
+});
 export default Modernizr.speechsynthesis;

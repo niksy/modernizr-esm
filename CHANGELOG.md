@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Update Modernizr to v3.10.0
+
 ## [1.3.1][] - 2019-07-27
 
 ### Fixed

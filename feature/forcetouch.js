@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/forcetouch.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/forcetouch.js **/
 import Modernizr from "../src/Modernizr.js";
 import hasEvent from "../src/hasEvent.js";
 import prefixed from "../src/prefixed.js";

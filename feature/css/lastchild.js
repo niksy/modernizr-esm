@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.7.1/feature-detects/css/lastchild.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/lastchild.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 testStyles('#modernizr div {width:100px} #modernizr :last-child{width:200px;display:block}', function (elem) {
