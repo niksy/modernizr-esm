@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/nativeTestProps.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/nativeTestProps.js **/
 import injectElementWithStyles from './injectElementWithStyles.js';
 import domToCSS from './domToCSS.js';
 import computedStyle from './computedStyle.js';

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/custom-protocol-handler.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/custom-protocol-handler.js **/
 import Modernizr from "../src/Modernizr.js";
 Modernizr.addTest('customprotocolhandler', function () {
   if (!navigator.registerProtocolHandler) {

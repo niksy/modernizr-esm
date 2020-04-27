@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/storage/localstorage.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/storage/localstorage.js **/
 import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('localstorage', function () {
   var mod = 'modernizr';

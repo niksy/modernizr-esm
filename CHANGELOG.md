@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Update Modernizr to v3.11.0
+
 ## [1.4.0][] - 2020-04-10
 
 ### Added

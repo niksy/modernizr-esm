@@ -1,10 +1,10 @@
 /** Original source code: 
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/Modernizr
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/ModernizrProto
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/addTest
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/hasOwnProp
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/testRunner
- * https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/tests
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/Modernizr
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/ModernizrProto
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/addTest
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/hasOwnProp
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/testRunner
+ * https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/tests
 **/
 import is from './is';
 
@@ -48,7 +48,7 @@ function testRunner() {
 }
 
 var ModernizrProto = {
-  _version: "3.10.0",
+  _version: "3.11.0",
   _q: [],
   on: function (test, cb) {
     var self = this;

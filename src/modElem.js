@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/modElem.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/modElem.js **/
 import Modernizr from './Modernizr.js';
 import createElement from './createElement.js';
 var modElem = {

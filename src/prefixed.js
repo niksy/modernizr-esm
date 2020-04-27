@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/prefixed.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/prefixed.js **/
 import ModernizrProto from './Modernizr.js';
 import testPropsAll from './testPropsAll.js';
 import cssToDOM from './cssToDOM.js';

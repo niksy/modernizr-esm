@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/dom/passiveeventlisteners.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/dom/passiveeventlisteners.js **/
 import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('passiveeventlisteners', function () {
   var supportsPassiveOption = false;

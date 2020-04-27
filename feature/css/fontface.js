@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/fontface.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/fontface.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 

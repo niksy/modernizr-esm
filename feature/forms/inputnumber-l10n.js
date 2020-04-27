@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/forms/inputnumber-l10n.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/forms/inputnumber-l10n.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 import getBody from "../../src/getBody.js";

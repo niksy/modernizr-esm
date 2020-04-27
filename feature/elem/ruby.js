@@ -1,35 +1,22 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/elem/ruby.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/elem/ruby.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 import docElement from "../../src/docElement.js";
+import computedStyle from "../../src/computedStyle.js";
 Modernizr.addTest('ruby', function () {
   var ruby = createElement('ruby');
   var rt = createElement('rt');
   var rp = createElement('rp');
-  var displayStyleProperty = 'display';
-  var fontSizeStyleProperty = 'fontSize';
   ruby.appendChild(rp);
   ruby.appendChild(rt);
   docElement.appendChild(ruby);
 
-  if (getStyle(rp, displayStyleProperty) === 'none' || getStyle(ruby, displayStyleProperty) === 'ruby' && getStyle(rt, displayStyleProperty) === 'ruby-text' || getStyle(rp, fontSizeStyleProperty) === '6pt' && getStyle(rt, fontSizeStyleProperty) === '6pt') {
+  if (computedStyle(rp, null, 'display') === 'none' || computedStyle(ruby, null, 'display') === 'ruby' && computedStyle(rt, null, 'display') === 'ruby-text' || computedStyle(rp, null, 'fontSize') === '6pt' && computedStyle(rt, null, 'fontSize') === '6pt') {
     cleanUp();
     return true;
   } else {
     cleanUp();
     return false;
-  }
-
-  function getStyle(element, styleProperty) {
-    var result;
-
-    if (window.getComputedStyle) {
-      result = document.defaultView.getComputedStyle(element, null).getPropertyValue(styleProperty);
-    } else if (element.currentStyle) {
-      result = element.currentStyle[styleProperty];
-    }
-
-    return result;
   }
 
   function cleanUp() {

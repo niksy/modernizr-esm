@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/supports.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/supports.js **/
 import Modernizr from "../../src/Modernizr.js";
 
 var _isBrowser = typeof window !== "undefined";

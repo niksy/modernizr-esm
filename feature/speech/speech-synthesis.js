@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/speech/speech-synthesis.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/speech/speech-synthesis.js **/
 import Modernizr from "../../src/Modernizr.js";
 Modernizr.addTest('speechsynthesis', function () {
   try {

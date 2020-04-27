@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/es6/contains.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/es6/contains.js **/
 import Modernizr from "../../src/Modernizr.js";
 import is from "../../src/is.js";
 Modernizr.addTest('contains', is(String.prototype.contains, 'function'));

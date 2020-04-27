@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/hyphens.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/hyphens.js **/
 import prefixes from "../../src/prefixes.js";
 import createElement from "../../src/createElement.js";
 import testAllProps from "../../src/testAllProps.js";

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/feature-detects/css/will-change.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/will-change.js **/
 import Modernizr from "../../src/Modernizr.js";
 import docElement from "../../src/docElement.js";
 

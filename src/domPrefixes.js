@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.10.0/src/domPrefixes.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/domPrefixes.js **/
 import ModernizrProto from './Modernizr.js';
 import omPrefixes from './omPrefixes.js';
 var domPrefixes = true ? omPrefixes.toLowerCase().split(' ') : [];
