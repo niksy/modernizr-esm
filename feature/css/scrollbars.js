@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/scrollbars.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/scrollbars.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 import prefixes from "../../src/prefixes.js";

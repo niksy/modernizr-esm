@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/html5printshiv.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/html5printshiv.js **/
 import isSVG from './isSVG.js';
 
 var _isBrowser = typeof window !== "undefined";

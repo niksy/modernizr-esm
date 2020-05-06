@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/columns.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/columns.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testAllProps from "../../src/testAllProps.js";
 

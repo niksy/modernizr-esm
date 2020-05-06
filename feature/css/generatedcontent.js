@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/generatedcontent.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/generatedcontent.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 testStyles('#modernizr{font:0/0 a}#modernizr:after{content:":)";visibility:hidden;font:7px/1 a}', function (node) {

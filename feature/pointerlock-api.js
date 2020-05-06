@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/pointerlock-api.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/pointerlock-api.js **/
 import Modernizr from "../src/Modernizr.js";
 import prefixed from "../src/prefixed.js";
 

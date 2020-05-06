@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/isSVG.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/isSVG.js **/
 import docElement from './docElement.js';
 
 var _isBrowser = typeof window !== "undefined";

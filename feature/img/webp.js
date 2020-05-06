@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/img/webp.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/img/webp.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var webpTests = [{

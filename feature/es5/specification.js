@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/es5/specification.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/es5/specification.js **/
 import Modernizr from "../../src/Modernizr.js";
 import "./array.js";
 import "./date.js";

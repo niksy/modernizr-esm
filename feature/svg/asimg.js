@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/svg/asimg.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/svg/asimg.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 
 var _isBrowser = typeof window !== "undefined";

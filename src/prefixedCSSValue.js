@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/prefixedCSSValue.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/prefixedCSSValue.js **/
 import ModernizrProto from './Modernizr.js';
 import domPrefixes from './domPrefixes.js';
 import createElement from './createElement.js';

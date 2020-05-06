@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/mStyle.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/mStyle.js **/
 import Modernizr from './Modernizr.js';
 import modElem from './modElem.js';
 var mStyle = {

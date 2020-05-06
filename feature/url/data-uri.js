@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/url/data-uri.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/url/data-uri.js **/
 import Modernizr from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   if (navigator.userAgent.indexOf('MSIE 7.') !== -1) {

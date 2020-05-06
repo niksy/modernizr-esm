@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/audio/preload.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/audio/preload.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 import docElement from "../../src/docElement.js";
 import createElement from "../../src/createElement.js";

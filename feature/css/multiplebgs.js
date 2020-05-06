@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/multiplebgs.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/multiplebgs.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 Modernizr.addTest('multiplebgs', function () {

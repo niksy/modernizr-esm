@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/testPropsAll.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/testPropsAll.js **/
 import ModernizrProto from './Modernizr.js';
 import cssomPrefixes from './cssomPrefixes.js';
 import is from './is.js';

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/displaytable.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/displaytable.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 testStyles('#modernizr{display: table; direction: ltr}#modernizr div{display: table-cell; padding: 10px}', function (elem) {

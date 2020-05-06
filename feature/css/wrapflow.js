@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/css/wrapflow.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/wrapflow.js **/
 import Modernizr from "../../src/Modernizr.js";
 import prefixed from "../../src/prefixed.js";
 import docElement from "../../src/docElement.js";

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/feature-detects/svg/foreignobject.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/svg/foreignobject.js **/
 import Modernizr from "../../src/Modernizr.js";
 import toStringFn from "../../src/toStringFn.js";
 Modernizr.addTest('svgforeignobject', function () {

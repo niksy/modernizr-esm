@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/domToCSS.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/domToCSS.js **/
 function domToCSS(name) {
   return name.replace(/([A-Z])/g, function (str, m1) {
     return '-' + m1.toLowerCase();

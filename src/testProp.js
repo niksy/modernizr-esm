@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.0/src/testProp.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/testProp.js **/
 import ModernizrProto from './Modernizr.js';
 import testProps from './testProps.js';
 
