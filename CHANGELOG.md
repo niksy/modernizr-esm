@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [1.6.0][] - 2020-05-06
+
 ### Added
 
 - Update Modernizr to v3.11.1
@@ -76,7 +78,8 @@
 - Initial implementation
 
 
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/niksy/modernizr-esm/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/niksy/modernizr-esm/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/niksy/modernizr-esm/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/niksy/modernizr-esm/compare/v1.3.0...v1.3.1
