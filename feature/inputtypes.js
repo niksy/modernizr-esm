@@ -6,6 +6,7 @@ import docElement from "../src/docElement.js";
 var _isBrowser = typeof window !== "undefined";
 
 _isBrowser && function () {
+  Modernizr.addTest("inputtypes", Boolean(true));
   var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week', 'time', 'datetime-local', 'number', 'range', 'color'];
   var smile = '1)';
   var inputElemType;
@@ -35,4 +36,17 @@ _isBrowser && function () {
     Modernizr.addTest('inputtypes.' + inputElemType, !!bool);
   }
 }();
-export default Modernizr.inputtypes;
+export var inputtypes = Modernizr.inputtypes;
+export var inputtypesSearch = Modernizr.inputtypes.search;
+export var inputtypesTel = Modernizr.inputtypes.tel;
+export var inputtypesUrl = Modernizr.inputtypes.url;
+export var inputtypesEmail = Modernizr.inputtypes.email;
+export var inputtypesDatetime = Modernizr.inputtypes.datetime;
+export var inputtypesDate = Modernizr.inputtypes.date;
+export var inputtypesMonth = Modernizr.inputtypes.month;
+export var inputtypesWeek = Modernizr.inputtypes.week;
+export var inputtypesTime = Modernizr.inputtypes.time;
+export var inputtypesDatetimeLocal = Modernizr.inputtypes.datetimeLocal;
+export var inputtypesNumber = Modernizr.inputtypes.number;
+export var inputtypesRange = Modernizr.inputtypes.range;
+export var inputtypesColor = Modernizr.inputtypes.color;

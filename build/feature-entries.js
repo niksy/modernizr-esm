@@ -2,6 +2,7 @@ const path = require('path');
 const { parse } = require('@babel/parser');
 const { default: traverse } = require('@babel/traverse');
 const { default: generate } = require('@babel/generator');
+const { default: template } = require('@babel/template');
 const t = require('@babel/types');
 const amd = require('rollup-plugin-amd');
 const { camelCase } = require('lodash');
@@ -127,6 +128,7 @@ const babelPlugin = () => {
 			'MemberExpression|CallExpression'(path) {
 				const program = path.findParent((path) => path.isProgram());
 				let exportValue;
+				const collectedExportValues = [];
 
 				// Replace all `Modernizr._config` references to their default values
 				if (path.isMemberExpression()) {
@@ -151,20 +153,51 @@ const babelPlugin = () => {
 					 */
 					if (
 						path.get('property.name').node === 'addTest' &&
-						(arguments_ &&
-							arguments_[0] &&
-							arguments_[0].isBinaryExpression())
+						arguments_ &&
+						arguments_[0] &&
+						arguments_[0].isBinaryExpression()
 					) {
-						exportValue = arguments_[0].get('left.value').node.split('.')[0];
+						exportValue = arguments_[0]
+							.get('left.value')
+							.node.split('.')[0];
+
+						if (exportValue === 'inputtypes') {
+							const block = path
+								.findParent((path) => path.isForStatement())
+								.findParent((path) => path.isBlockStatement());
+
+							const properties = block
+								.get('body')[0]
+								.get('declarations')[0];
+
+							if (properties.get('id.name').node === 'props') {
+								block.unshiftContainer(
+									'body',
+									template(
+										`Modernizr.addTest(IDENTIFIER, Boolean(true));`
+									)({ IDENTIFIER: t.stringLiteral(exportValue) })
+								);
+
+								properties
+									.get('init.elements')
+									.forEach((path) => {
+										collectedExportValues.push(
+											`${exportValue}.${camelCase(
+												path.get('value').node
+											)}`
+										);
+									});
+							}
+						}
 					}
 					/**
 					 * Expression like `'postmessage'`
 					 */
 					if (
 						path.get('property.name').node === 'addTest' &&
-						(arguments_ &&
-							arguments_[0] &&
-							arguments_[0].isStringLiteral())
+						arguments_ &&
+						arguments_[0] &&
+						arguments_[0].isStringLiteral()
 					) {
 						exportValue = arguments_[0].get('value').node;
 					}
@@ -178,7 +211,8 @@ const babelPlugin = () => {
 					const arguments_ = path.get('arguments');
 					if (
 						path.get('callee.name').node === 'addTest' &&
-						(arguments_ && arguments_[0].isStringLiteral())
+						arguments_ &&
+						arguments_[0].isStringLiteral()
 					) {
 						exportValue = arguments_[0].get('value').node;
 					}
@@ -207,10 +241,14 @@ const babelPlugin = () => {
 				) {
 					return;
 				}
-				exportValues.push({
-					exportValue: exportValue,
-					isSyncTest: path.isMemberExpression()
-				});
+				[]
+					.concat(exportValue, collectedExportValues)
+					.forEach((value) => {
+						exportValues.push({
+							exportValue: value,
+							isSyncTest: path.isMemberExpression()
+						});
+					});
 			},
 			ImportDeclaration(path) {
 				/*
