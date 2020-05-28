@@ -171,12 +171,19 @@ const babelPlugin = () => {
 								.get('declarations')[0];
 
 							if (properties.get('id.name').node === 'props') {
-								block.unshiftContainer(
-									'body',
-									template(
-										`Modernizr.addTest(IDENTIFIER, Boolean(true));`
-									)({ IDENTIFIER: t.stringLiteral(exportValue) })
-								);
+								block
+									.findParent((path) =>
+										path.isExpressionStatement()
+									)
+									.insertBefore(
+										template(
+											`Modernizr.addTest(IDENTIFIER, window && Boolean(true));`
+										)({
+											IDENTIFIER: t.stringLiteral(
+												exportValue
+											)
+										})
+									);
 
 								properties
 									.get('init.elements')

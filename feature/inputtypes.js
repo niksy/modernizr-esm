@@ -5,8 +5,8 @@ import docElement from "../src/docElement.js";
 
 var _isBrowser = typeof window !== "undefined";
 
+Modernizr.addTest("inputtypes", _isBrowser && window && Boolean(true));
 _isBrowser && function () {
-  Modernizr.addTest("inputtypes", Boolean(true));
   var props = ['search', 'tel', 'url', 'email', 'datetime', 'date', 'month', 'week', 'time', 'datetime-local', 'number', 'range', 'color'];
   var smile = '1)';
   var inputElemType;

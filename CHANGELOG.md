@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Changed
+
+-   `inputtypes` now has check for browser environment
+
 ## [1.7.0][] - 2020-05-28
 
 ### Fixed
@@ -97,7 +101,5 @@
 [1.2.0]: https://github.com/niksy/modernizr-esm/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/niksy/modernizr-esm/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/niksy/modernizr-esm/tree/v1.1.0
-
-
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.0...HEAD
+[unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.0...HEAD
 [1.7.0]: https://github.com/niksy/modernizr-esm/tree/v1.7.0
