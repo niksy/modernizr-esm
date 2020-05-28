@@ -188,10 +188,14 @@ const babelPlugin = () => {
 								properties
 									.get('init.elements')
 									.forEach((path) => {
+										const feature = path.get('value').node;
+										const featureProperty = feature.includes(
+											'-'
+										)
+											? `['${feature}']`
+											: `.${feature}`;
 										collectedExportValues.push(
-											`${exportValue}.${camelCase(
-												path.get('value').node
-											)}`
+											`${exportValue}${featureProperty}`
 										);
 									});
 							}

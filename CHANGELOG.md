@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Fixed
+
+- Reference to `inputtypes` property for `datetime-local`
+
 ## [1.7.1][] - 2020-05-28
 
 ### Changed
