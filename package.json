@@ -1,6 +1,6 @@
 {
   "name": "modernizr-esm",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Modernizr tests as ES Modules.",
   "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com)",
   "license": "MIT",
