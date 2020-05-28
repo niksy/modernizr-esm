@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [1.7.2][] - 2020-05-28
+
 ### Fixed
 
 - Reference to `inputtypes` property for `datetime-local`
@@ -111,5 +113,6 @@
 [1.7.0]: https://github.com/niksy/modernizr-esm/tree/v1.7.0
 
 
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.1...HEAD
+[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.2...HEAD
+[1.7.2]: https://github.com/niksy/modernizr-esm/compare/v1.7.1...v1.7.2
 [1.7.1]: https://github.com/niksy/modernizr-esm/tree/v1.7.1
