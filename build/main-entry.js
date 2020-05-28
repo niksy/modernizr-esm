@@ -53,6 +53,9 @@ const babelPlugin = () => {
 				if (featureNameSplit.length === 1) {
 					Modernizr[featureNameSplit[0]] = result;
 				} else {
+					if (typeof Modernizr[featureNameSplit[0]] === 'undefined') {
+						Modernizr[featureNameSplit[0]] = result;
+					}
 					if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
 						Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
 					}
