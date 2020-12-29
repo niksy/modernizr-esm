@@ -125,7 +125,7 @@ const babelPlugin = () => {
 					}
 				}
 			},
-			VariableDeclarator (path) {
+			VariableDeclarator(path) {
 				/*
 				 * Collect all references to WebP tests contained in object
 				 */
@@ -133,10 +133,12 @@ const babelPlugin = () => {
 					const items = path.get('init.elements');
 					items.forEach((path) => {
 						exportValues.push({
-							exportValue: path.get('properties')[1].get('value.value').node,
+							exportValue: path
+								.get('properties')[1]
+								.get('value.value').node,
 							isSyncTest: true
 						});
-					})
+					});
 				}
 			},
 			'MemberExpression|CallExpression'(path) {
@@ -163,7 +165,7 @@ const babelPlugin = () => {
 				if (path.isMemberExpression()) {
 					const arguments_ = path.parentPath.get('arguments');
 					/**
-					 * Expression like `'inputtypes.' + inputElemType`
+					 * Expression like `'inputtypes.' + inputElemType`.
 					 */
 					if (
 						path.get('property.name').node === 'addTest' &&
@@ -216,7 +218,7 @@ const babelPlugin = () => {
 						}
 					}
 					/**
-					 * Expression like `'postmessage'`
+					 * Expression like `'postmessage'`.
 					 */
 					if (
 						path.get('property.name').node === 'addTest' &&

@@ -6,7 +6,7 @@
  * https://github.com/Modernizr/Modernizr/blob/v3.11.4/src/testRunner
  * https://github.com/Modernizr/Modernizr/blob/v3.11.4/src/tests
 **/
-import is from './is';
+import is from './is.js';
 
 var _isBrowser = typeof window !== "undefined";
 

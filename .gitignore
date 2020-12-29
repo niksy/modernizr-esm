@@ -4,3 +4,4 @@ package-lock.json
 yarn.lock
 npm-debug.log
 local.log
+!test/fixtures/node_modules/

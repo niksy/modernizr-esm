@@ -4,12 +4,18 @@ const path = require('path');
 
 let config;
 
-const local = typeof process.env.CI === 'undefined' || process.env.CI === 'false';
-const port = 9001;
+const isCI =
+	typeof process.env.CI !== 'undefined' && process.env.CI !== 'false';
+const isPR =
+	typeof process.env.TRAVIS_PULL_REQUEST !== 'undefined' &&
+	process.env.TRAVIS_PULL_REQUEST !== 'false';
+const local = !isCI || (isCI && isPR);
 
-if ( local ) {
+const port = 0;
+
+if (local) {
 	config = {
-		browsers: ['Chrome'],
+		browsers: ['Chrome']
 	};
 } else {
 	config = {
@@ -41,55 +47,56 @@ if ( local ) {
 				build: 'Automated (Karma)',
 				name: 'Firefox'
 			},
-			'BS-IE9': {
+			'BS-IE11': {
 				base: 'BrowserStack',
 				browser: 'IE',
-				'browser_version': '9',
+				'browser_version': '11',
 				os: 'Windows',
 				'os_version': '7',
 				project: 'modernizr-esm',
 				build: 'Automated (Karma)',
-				name: 'IE9'
-			},
+				name: 'IE11'
+			}
 		},
-		browsers: ['BS-Chrome', 'BS-Firefox', 'BS-IE9']
+		browsers: ['BS-Chrome', 'BS-Firefox', 'BS-IE11']
 	};
 }
 
-module.exports = function ( baseConfig ) {
-
-	baseConfig.set(Object.assign({
-		basePath: '',
-		frameworks: ['mocha'],
-		files: [
-			'test/**/.webpack.js'
-		],
-		exclude: [],
-		preprocessors: {
-			'test/**/.webpack.js': ['webpack', 'sourcemap']
-		},
-		reporters: ['mocha'],
-		port: port,
-		colors: true,
-		logLevel: baseConfig.LOG_INFO,
-		autoWatch: false,
-		client: {
-			mocha: {
-				timeout: 20000
+module.exports = function (baseConfig) {
+	baseConfig.set(
+		Object.assign(
+			{
+				basePath: '',
+				frameworks: ['mocha'],
+				files: ['test/**/.webpack.js'],
+				exclude: [],
+				preprocessors: {
+					'test/**/.webpack.js': ['webpack', 'sourcemap']
+				},
+				reporters: ['mocha'],
+				port: port,
+				colors: true,
+				logLevel: baseConfig.LOG_INFO,
+				autoWatch: false,
+				client: {
+					mocha: {
+						timeout: 20000
+					},
+					captureConsole: true
+				},
+				browserConsoleLogOptions: {
+					level: 'log',
+					format: '%b %T: %m',
+					terminal: true
+				},
+				webpack: {
+					mode: 'none',
+					devtool: 'cheap-module-inline-source-map'
+				},
+				singleRun: true,
+				concurrency: Infinity
 			},
-			captureConsole: true
-		},
-		browserConsoleLogOptions: {
-			level: 'log',
-			format: '%b %T: %m',
-			terminal: true
-		},
-		webpack: {
-			mode: 'none',
-			devtool: 'cheap-module-inline-source-map'
-		},
-		singleRun: true,
-		concurrency: Infinity
-	}, config));
-
+			config
+		)
+	);
 };

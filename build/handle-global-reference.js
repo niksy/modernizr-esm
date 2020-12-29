@@ -11,7 +11,7 @@ const customGlobals = ['docElement'];
 function shouldHandleEnvironmentForPath(path, globalReferenceVariable) {
 	/*
 	 * Handle only if
-	 * * is not inside function or is inside IIFE
+	 * * is not inside function or is inside IIFE or is `document.createElement` direct reference
 	 * * is not variable declarator for browser check
 	 * * doesn’t already have check for browser
 	 * * is not inside `try` statement
@@ -34,6 +34,23 @@ function shouldHandleEnvironmentForPath(path, globalReferenceVariable) {
 						path.isCallExpression() &&
 						!path.parentPath.isLogicalExpression() &&
 						path.get('callee').isFunctionExpression()
+				)
+			) === true ||
+			Boolean(
+				path.findParent(
+					(path) =>
+						path.isUnaryExpression() &&
+						path
+							.get('argument')
+							.matchesPattern('document.createElement') &&
+						path.get('operator').node === 'typeof'
+				)
+			) === true ||
+			Boolean(
+				path.findParent(
+					(path) =>
+						path.isMemberExpression() &&
+						path.matchesPattern('document.createElement.apply')
 				)
 			) === true) &&
 		Boolean(
@@ -191,6 +208,33 @@ const babelPlugin = (options = {}) => {
 								!path.parentPath.isLogicalExpression() &&
 								path.get('callee').isFunctionExpression()
 						);
+
+						const typeofPath = path.findParent(
+							(path) =>
+								path.isUnaryExpression() &&
+								path
+									.get('argument')
+									.matchesPattern('document.createElement') &&
+								path.get('operator').node === 'typeof'
+						);
+						if (typeofPath) {
+							foundPath = typeofPath.findParent((path) =>
+								path.isBinaryExpression()
+							);
+						}
+
+						const callExpressionPath = path.findParent(
+							(path) =>
+								path.isMemberExpression() &&
+								path.matchesPattern(
+									'document.createElement.apply'
+								)
+						);
+						if (callExpressionPath) {
+							foundPath = callExpressionPath.findParent((path) =>
+								path.isCallExpression()
+							);
+						}
 
 						if (addTestNode) {
 							foundPath = addTestNode.get('arguments')[1];

@@ -1,13 +1,22 @@
 {
 	"root": true,
-	"extends": [
-		"niksy",
-		"prettier"
-	],
-	"plugins": [
-		"prettier"
-	],
+	"extends": ["niksy", "prettier"],
+	"plugins": ["prettier"],
 	"rules": {
 		"prettier/prettier": 1
-	}
+	},
+	"overrides": [
+		{
+			"files": ["karma.conf.js", "rollup.config.js"],
+			"env": {
+				"node": true,
+				"es6": true
+			},
+			"rules": {
+				"no-console": 0,
+				"unicorn/numeric-separators-style": 0
+			}
+		}
+	],
+	"ignorePatterns": ["src/**/*.js", "feature/**/*.js"]
 }

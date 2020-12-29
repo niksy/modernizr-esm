@@ -174,8 +174,8 @@ const babelPlugin = () => {
 				 */
 				if (
 					path.get('object.name').node === 'tests' &&
-					(path.get('property.object') &&
-						path.get('property.object').isIdentifier())
+					path.get('property.object') &&
+					path.get('property.object').isIdentifier()
 				) {
 					path.get('object').replaceWith(t.identifier('Modernizr'));
 				}
@@ -269,7 +269,7 @@ const rollupPlugins = [
 				!moduleId.includes('Modernizr') &&
 				!moduleId.includes('tests')
 			) {
-				return `./${moduleId}`;
+				return `./${moduleId}.js`;
 			}
 			if (
 				parentPath.includes('testRunner') &&
