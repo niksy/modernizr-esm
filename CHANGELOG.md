@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Fixed
+
+- WebP exports not available ([#8](https://github.com/niksy/modernizr-esm/issues/8))
+
 ## [1.7.2][] - 2020-05-28
 
 ### Fixed

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/atRule.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/src/atRule.js **/
 import ModernizrProto from './Modernizr.js';
 import prefixes from './cssomPrefixes.js';
 

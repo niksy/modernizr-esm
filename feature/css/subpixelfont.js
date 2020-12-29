@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/subpixelfont.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/css/subpixelfont.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 import computedStyle from "../../src/computedStyle.js";

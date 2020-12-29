@@ -125,6 +125,20 @@ const babelPlugin = () => {
 					}
 				}
 			},
+			VariableDeclarator (path) {
+				/*
+				 * Collect all references to WebP tests contained in object
+				 */
+				if (path.get('id.name').node === 'webpTests') {
+					const items = path.get('init.elements');
+					items.forEach((path) => {
+						exportValues.push({
+							exportValue: path.get('properties')[1].get('value.value').node,
+							isSyncTest: true
+						});
+					})
+				}
+			},
 			'MemberExpression|CallExpression'(path) {
 				const program = path.findParent((path) => path.isProgram());
 				let exportValue;

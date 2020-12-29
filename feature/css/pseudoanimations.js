@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/pseudoanimations.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/css/pseudoanimations.js **/
 import Modernizr from "../../src/Modernizr.js";
 import testStyles from "../../src/testStyles.js";
 import prefixes from "../../src/prefixes.js";

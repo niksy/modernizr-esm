@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/getBody.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/src/getBody.js **/
 import createElement from './createElement.js';
 import isSVG from './isSVG.js';
 

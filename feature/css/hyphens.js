@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/hyphens.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/css/hyphens.js **/
 import prefixes from "../../src/prefixes.js";
 import createElement from "../../src/createElement.js";
 import testAllProps from "../../src/testAllProps.js";
@@ -80,23 +80,23 @@ Modernizr.addAsyncTest(function () {
 
     function test_hyphens_find(delimiter) {
       try {
-        var dummy = createElement('input');
+        var sampleInput = createElement('input');
         var div = createElement('div');
         var testword = 'lebowski';
         var result = false;
         var textrange;
         var firstChild = document.body.firstElementChild || document.body.firstChild;
-        dummy.style.cssText = 'position:fixed;top:0;';
+        sampleInput.style.cssText = 'position:fixed;top:0;';
         div.style.cssText = 'position:fixed;top:0;';
         div.innerHTML = testword + delimiter + testword;
         document.body.insertBefore(div, firstChild);
-        document.body.insertBefore(dummy, div);
+        document.body.insertBefore(sampleInput, div);
 
-        if (dummy.setSelectionRange) {
-          dummy.focus();
-          dummy.setSelectionRange(0, 0);
-        } else if (dummy.createTextRange) {
-          textrange = dummy.createTextRange();
+        if (sampleInput.setSelectionRange) {
+          sampleInput.focus();
+          sampleInput.setSelectionRange(0, 0);
+        } else if (sampleInput.createTextRange) {
+          textrange = sampleInput.createTextRange();
           textrange.collapse(true);
           textrange.moveEnd('character', 0);
           textrange.moveStart('character', 0);
@@ -115,7 +115,7 @@ Modernizr.addAsyncTest(function () {
         }
 
         document.body.removeChild(div);
-        document.body.removeChild(dummy);
+        document.body.removeChild(sampleInput);
         return result;
       } catch (e) {
         return false;

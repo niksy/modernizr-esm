@@ -16,7 +16,7 @@ const config = async () => {
 		globby([
 			`${modernizrDir}/feature-detects/${
 				process.env.TEST
-					? '{emoji,flash,css/cssgrid,css/filters,audio/autoplay,indexeddb,audio,inputtypes,ambientlight}'
+					? '{emoji,flash,img/webp,css/cssgrid,css/filters,audio/autoplay,indexeddb,audio,inputtypes,ambientlight}'
 					: '**/*'
 			}.js`
 		])

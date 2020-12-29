@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/img/webp.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/img/webp.js **/
 import Modernizr, { addTest, createAsyncTestListener } from "../../src/Modernizr.js";
 Modernizr.addAsyncTest(function () {
   var webpTests = [{
@@ -42,3 +42,7 @@ Modernizr.addAsyncTest(function () {
     }
   });
 });
+export var webp = Modernizr.webp;
+export var webpAlpha = Modernizr.webp.alpha;
+export var webpAnimation = Modernizr.webp.animation;
+export var webpLossless = Modernizr.webp.lossless;

@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/src/mq.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/src/mq.js **/
 import ModernizrProto from './Modernizr.js';
 import injectElementWithStyles from './injectElementWithStyles.js';
 import computedStyle from './computedStyle.js';

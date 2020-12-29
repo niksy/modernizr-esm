@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/quota-management-api.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/quota-management-api.js **/
 import Modernizr from "../src/Modernizr.js";
 import prefixed from "../src/prefixed.js";
 Modernizr.addTest('quotamanagement', function () {

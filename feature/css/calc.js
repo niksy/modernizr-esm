@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/css/calc.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/css/calc.js **/
 import Modernizr from "../../src/Modernizr.js";
 import createElement from "../../src/createElement.js";
 import prefixes from "../../src/prefixes.js";

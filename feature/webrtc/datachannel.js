@@ -1,4 +1,4 @@
-/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.1/feature-detects/webrtc/datachannel.js **/
+/** Original source code: https://github.com/Modernizr/Modernizr/blob/v3.11.4/feature-detects/webrtc/datachannel.js **/
 import Modernizr from "../../src/Modernizr.js";
 import "../../src/prefixed.js";
 import domPrefixesAll from "../../src/domPrefixesAll.js";
@@ -13,6 +13,7 @@ Modernizr.addTest('datachannel', function () {
 
     if (PeerConnectionConstructor) {
       var peerConnection = new PeerConnectionConstructor(null);
+      peerConnection.close();
       return 'createDataChannel' in peerConnection;
     }
   }
