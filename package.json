@@ -24,7 +24,7 @@
     "build": "rm -rf src/ feature/ && rollup --config build/index.js && echo '{\"type\":\"module\"}' > feature/package.json && echo '{\"type\":\"module\"}' > src/package.json",
     "lint": "eslint 'build/**/*.js'",
     "module-check": "node --input-type=module -e 'import \"modernizr-esm/feature/inputtypes\"; import \"modernizr-esm/feature/file/api\"; import \"modernizr-esm/feature/json\"; import \"modernizr-esm/feature/webrtc/getusermedia\";'",
-    "prepublishOnly": "npm run build && npm run module-check",
+    "prepublishOnly": "npm run build",
     "postpublish": "GITHUB_TOKEN=$GITHUB_RELEASE_TOKEN github-release-from-changelog",
     "release": "np --no-release-draft",
     "test": "npm run lint && npm run test:automated",
