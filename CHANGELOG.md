@@ -2,15 +2,18 @@
 
 ## [Unreleased][]
 
+## [2.0.0][] - 2020-12-30
+
 ### Fixed
 
-- WebP exports not available ([#8](https://github.com/niksy/modernizr-esm/issues/8))
+-   WebP exports not available
+    ([#8](https://github.com/niksy/modernizr-esm/issues/8))
 
 ## [1.7.2][] - 2020-05-28
 
 ### Fixed
 
-- Reference to `inputtypes` property for `datetime-local`
+-   Reference to `inputtypes` property for `datetime-local`
 
 ## [1.7.1][] - 2020-05-28
 
@@ -115,8 +118,7 @@
 [1.1.0]: https://github.com/niksy/modernizr-esm/tree/v1.1.0
 [unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.0...HEAD
 [1.7.0]: https://github.com/niksy/modernizr-esm/tree/v1.7.0
-
-
-[Unreleased]: https://github.com/niksy/modernizr-esm/compare/v1.7.2...HEAD
+[unreleased]: https://github.com/niksy/modernizr-esm/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/niksy/modernizr-esm/compare/v1.7.2...v2.0.0
 [1.7.2]: https://github.com/niksy/modernizr-esm/compare/v1.7.1...v1.7.2
 [1.7.1]: https://github.com/niksy/modernizr-esm/tree/v1.7.1
